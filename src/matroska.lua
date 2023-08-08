@@ -333,6 +333,8 @@ end
 function Segment:get_global_position(relativ_pos)
     return self.data_position + relativ_pos
 end
+
+function Segment:unknown_size_is_allowed() return true end
 -- -----------------------------------------------------------------------------
 
 
@@ -771,6 +773,8 @@ function cluster.Cluster:get_semantic()
         cluster.PrevSize, cluster.SimpleBlock, cluster.BlockGroup,
         cluster.EncryptedBlock}
 end
+
+function cluster.Cluster:unknown_size_is_allowed() return true end
 -- -----------------------------------------------------------------------------
 
 
