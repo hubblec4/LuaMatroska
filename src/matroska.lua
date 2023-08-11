@@ -322,7 +322,7 @@ function Segment:new()
 end
 
 function Segment:get_context()
-    return {id = 0x18538067, manda = true, parent = nil}
+    return {id = 0x18538067, manda = true, parent = nil, name = "Segment"}
 end
 
 function Segment:get_semantic()
@@ -347,7 +347,7 @@ function seekhead.SeekHead:new()
 end
 
 function seekhead.SeekHead:get_context()
-    return {id = 0x114D9B74, manda = false, parent = Segment}
+    return {id = 0x114D9B74, manda = false, parent = Segment, name = "SeekHead"}
 end
 
 function seekhead.SeekHead:get_semantic()
@@ -386,7 +386,7 @@ function seekhead.Seek:new()
 end
 
 function seekhead.Seek:get_context()
-    return {id = 0x4DBB, manda = true, parent = seekhead.SeekHead}
+    return {id = 0x4DBB, manda = true, parent = seekhead.SeekHead, name = "Seek"}
 end
 
 function seekhead.Seek:get_semantic()
@@ -431,7 +431,7 @@ function seekhead.SeekID:new()
 end
 
 function seekhead.SeekID:get_context()
-    return {id = 0x53AB, manda = true, parent = seekhead.Seek}
+    return {id = 0x53AB, manda = true, parent = seekhead.Seek, name = "SeekID"}
 end
 
 function seekhead.SeekID:validate_data_size()
@@ -449,7 +449,7 @@ function seekhead.SeekPosition:new()
 end
 
 function seekhead.SeekPosition:get_context()
-    return {id = 0x53AC, manda = true, parent = seekhead.Seek}
+    return {id = 0x53AC, manda = true, parent = seekhead.Seek, name = "SeekPosition"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -463,7 +463,7 @@ function info.Info:new()
 end
 
 function info.Info:get_context()
-    return {id = 0x1549A966, manda = true, parent = Segment}
+    return {id = 0x1549A966, manda = true, parent = info.Segment, name = "Info"}
 end
 
 function info.Info:get_semantic()
@@ -485,7 +485,7 @@ function info.SegmentUUID:new()
 end
 
 function info.SegmentUUID:get_context()
-    return {id = 0x73A4, manda = false, parent = info.Info}
+    return {id = 0x73A4, manda = false, parent = info.Info, name = "SegmentUUID"}
 end
 
 function info.SegmentUUID:validate_data_size()
@@ -512,7 +512,7 @@ function info.SegmentFilename:new()
 end
 
 function info.SegmentFilename:get_context()
-    return {id = 0x7384, manda = false, parent = info.Info}
+    return {id = 0x7384, manda = false, parent = info.Info, name = "SegmentFilename"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -526,7 +526,7 @@ function info.PrevUUID:new()
 end
 
 function info.PrevUUID:get_context()
-    return {id = 0x3CB923, manda = false, parent = info.Info}
+    return {id = 0x3CB923, manda = false, parent = info.Info, name = "PrevUUID"}
 end
 
 function info.PrevUUID:validate_data_size()
@@ -544,7 +544,7 @@ function info.PrevFilename:new()
 end
 
 function info.PrevFilename:get_context()
-    return {id = 0x3C83AB, manda = false, parent = info.Info}
+    return {id = 0x3C83AB, manda = false, parent = info.Info, name = "PrevFilename"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -558,7 +558,7 @@ function info.NextUUID:new()
 end
 
 function info.NextUUID:get_context()
-    return {id = 0x3EB923, manda = false, parent = info.Info}
+    return {id = 0x3EB923, manda = false, parent = info.Info, name = "NextUUID"}
 end
 
 function info.NextUUID:validate_data_size()
@@ -576,7 +576,7 @@ function info.NextFilename:new()
 end
 
 function info.NextFilename:get_context()
-    return {id = 0x3E83BB, manda = false, parent = info.Info}
+    return {id = 0x3E83BB, manda = false, parent = info.Info, name = "NextFilename"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -590,7 +590,7 @@ function info.SegmentFamily:new()
 end
 
 function info.SegmentFamily:get_context()
-    return {id = 0x4444, manda = false, parent = info.Info}
+    return {id = 0x4444, manda = false, parent = info.Info, name = "SegmentFamily"}
 end
 
 function info.SegmentFamily:validate_data_size()
@@ -608,7 +608,7 @@ function info.ChapterTranslate:new()
 end
 
 function info.ChapterTranslate:get_context()
-    return {id = 0x6924, manda = false, parent = info.Info}
+    return {id = 0x6924, manda = false, parent = info.Info, name = "ChapterTranslate"}
 end
 
 function info.ChapterTranslate:get_semantic()
@@ -627,7 +627,7 @@ function info.ChapterTranslateID:new()
 end
 
 function info.ChapterTranslateID:get_context()
-    return {id = 0x69A5, manda = true, parent = info.ChapterTranslate}
+    return {id = 0x69A5, manda = true, parent = info.ChapterTranslate, name = "ChapterTranslateID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -641,7 +641,7 @@ function info.ChapterTranslateCodec:new()
 end
 
 function info.ChapterTranslateCodec:get_context()
-    return {id = 0x69BF, manda = true, parent = info.ChapterTranslate}
+    return {id = 0x69BF, manda = true, parent = info.ChapterTranslate, name = "ChapterTranslateCodec"}
 end
 
 function info.ChapterTranslateCodec:validate_data()
@@ -659,7 +659,7 @@ function info.ChapterTranslateEditionUID:new()
 end
 
 function info.ChapterTranslateEditionUID:get_context()
-    return {id = 0x69FC, manda = false, parent = info.ChapterTranslate}
+    return {id = 0x69FC, manda = false, parent = info.ChapterTranslate, name = "ChapterTranslateEditionUID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -673,7 +673,7 @@ function info.TimestampScale:new()
 end
 
 function info.TimestampScale:get_context()
-    return {id = 0x2AD7B1, manda = true, parent = info.Info}
+    return {id = 0x2AD7B1, manda = true, parent = info.Info, name = "TimestampScale"}
 end
 
 function info.TimestampScale:validate_data()
@@ -691,7 +691,7 @@ function info.Duration:new()
 end
 
 function info.Duration:get_context()
-    return {id = 0x4489, manda = false, parent = info.Info}
+    return {id = 0x4489, manda = false, parent = info.Info, name = "Duration"}
 end
 
 function info.Duration:validate_data()
@@ -709,7 +709,7 @@ function info.DateUTC:new()
 end
 
 function info.DateUTC:get_context()
-    return {id = 0x4461, manda = false, parent = info.Info}
+    return {id = 0x4461, manda = false, parent = info.Info, name = "DateUTC"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -723,7 +723,7 @@ function info.Title:new()
 end
 
 function info.Title:get_context()
-    return {id = 0x7BA9, manda = false, parent = info.Info}
+    return {id = 0x7BA9, manda = false, parent = info.Info, name = "Title"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -737,7 +737,7 @@ function info.MuxingApp:new()
 end
 
 function info.MuxingApp:get_context()
-    return {id = 0x4D80, manda = true, parent = info.Info}
+    return {id = 0x4D80, manda = true, parent = info.Info, name = "MuxingApp"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -751,7 +751,7 @@ function info.WritingApp:new()
 end
 
 function info.WritingApp:get_context()
-    return {id = 0x5741, manda = true, parent = info.Info}
+    return {id = 0x5741, manda = true, parent = info.Info, name = "WritingApp"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -765,7 +765,7 @@ function cluster.Cluster:new()
 end
 
 function cluster.Cluster:get_context()
-    return {id = 0x1F43B675, manda = false, parent = Segment}
+    return {id = 0x1F43B675, manda = false, parent = cluster.Segment, name = "Cluster"}
 end
 
 function cluster.Cluster:get_semantic()
@@ -787,7 +787,7 @@ function cluster.Timestamp:new()
 end
 
 function cluster.Timestamp:get_context()
-    return {id = 0xE7, manda = true, parent = cluster.Cluster}
+    return {id = 0xE7, manda = true, parent = cluster.Cluster, name = "Timestamp"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -801,7 +801,7 @@ function cluster.SilentTracks:new()
 end
 
 function cluster.SilentTracks:get_context()
-    return {id = 0x5854, manda = false, parent = cluster.Cluster}
+    return {id = 0x5854, manda = false, parent = cluster.Cluster, name = "SilentTracks"}
 end
 
 function cluster.SilentTracks:get_semantic()
@@ -819,7 +819,7 @@ function cluster.SilentTrackNumber:new()
 end
 
 function cluster.SilentTrackNumber:get_context()
-    return {id = 0x58D7, manda = false, parent = cluster.SilentTracks}
+    return {id = 0x58D7, manda = false, parent = cluster.SilentTracks, name = "SilentTrackNumber"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -833,7 +833,7 @@ function cluster.Position:new()
 end
 
 function cluster.Position:get_context()
-    return {id = 0xA7, manda = false, parent = cluster.Cluster}
+    return {id = 0xA7, manda = false, parent = cluster.Cluster, name = "Position"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -847,7 +847,7 @@ function cluster.PrevSize:new()
 end
 
 function cluster.PrevSize:get_context()
-    return {id = 0xAB, manda = false, parent = cluster.Cluster}
+    return {id = 0xAB, manda = false, parent = cluster.Cluster, name = "PrevSize"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -861,7 +861,7 @@ function cluster.SimpleBlock:new()
 end
 
 function cluster.SimpleBlock:get_context()
-    return {id = 0xA3, manda = false, parent = cluster.Cluster}
+    return {id = 0xA3, manda = false, parent = cluster.Cluster, name = "SimpleBlock"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -875,7 +875,7 @@ function cluster.BlockGroup:new()
 end
 
 function cluster.BlockGroup:get_context()
-    return {id = 0xA0, manda = false, parent = cluster.Cluster}
+    return {id = 0xA0, manda = false, parent = cluster.Cluster, name = "BlockGroup"}
 end
 
 function cluster.BlockGroup:get_semantic()
@@ -896,7 +896,7 @@ function cluster.Block:new()
 end
 
 function cluster.Block:get_context()
-    return {id = 0xA1, manda = true, parent = cluster.BlockGroup}
+    return {id = 0xA1, manda = true, parent = cluster.BlockGroup, name = "Block"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -910,7 +910,7 @@ function cluster.BlockVirtual:new()
 end
 
 function cluster.BlockVirtual:get_context()
-    return {id = 0xA2, manda = false, parent = cluster.BlockGroup}
+    return {id = 0xA2, manda = false, parent = cluster.BlockGroup, name = "BlockVirtual"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -924,7 +924,7 @@ function cluster.BlockAdditions:new()
 end
 
 function cluster.BlockAdditions:get_context()
-    return {id = 0x75A1, manda = false, parent = cluster.BlockGroup}
+    return {id = 0x75A1, manda = false, parent = cluster.BlockGroup, name = "BlockAdditions"}
 end
 
 function cluster.BlockAdditions:get_semantic()
@@ -942,7 +942,7 @@ function cluster.BlockMore:new()
 end
 
 function cluster.BlockMore:get_context()
-    return {id = 0xA6, manda = true, parent = cluster.BlockAdditions}
+    return {id = 0xA6, manda = true, parent = cluster.BlockAdditions, name = "BlockMore"}
 end
 
 function cluster.BlockMore:get_semantic()
@@ -960,7 +960,7 @@ function cluster.BlockAdditional:new()
 end
 
 function cluster.BlockAdditional:get_context()
-    return {id = 0xA5, manda = true, parent = cluster.BlockMore}
+    return {id = 0xA5, manda = true, parent = cluster.BlockMore, name = "BlockAdditional"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -974,7 +974,7 @@ function cluster.BlockAddID:new()
 end
 
 function cluster.BlockAddID:get_context()
-    return {id = 0xEE, manda = true, parent = cluster.BlockMore}
+    return {id = 0xEE, manda = true, parent = cluster.BlockMore, name = "BlockAddID"}
 end
 
 function cluster.BlockAddID:validate_data()
@@ -992,7 +992,7 @@ function cluster.BlockDuration:new()
 end
 
 function cluster.BlockDuration:get_context()
-    return {id = 0x9B, manda = false, parent = cluster.BlockGroup}
+    return {id = 0x9B, manda = false, parent = cluster.BlockGroup, name = "BlockDuration"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1006,7 +1006,7 @@ function cluster.ReferencePriority:new()
 end
 
 function cluster.ReferencePriority:get_context()
-    return {id = 0xFA, manda = true, parent = cluster.BlockGroup}
+    return {id = 0xFA, manda = true, parent = cluster.BlockGroup, name = "ReferencePriority"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1020,7 +1020,7 @@ function cluster.ReferenceBlock:new()
 end
 
 function cluster.ReferenceBlock:get_context()
-    return {id = 0xFB, manda = false, parent = cluster.BlockGroup}
+    return {id = 0xFB, manda = false, parent = cluster.BlockGroup, name = "ReferenceBlock"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1034,7 +1034,7 @@ function cluster.ReferenceVirtual:new()
 end
 
 function cluster.ReferenceVirtual:get_context()
-    return {id = 0xFD, manda = false, parent = cluster.BlockGroup}
+    return {id = 0xFD, manda = false, parent = cluster.BlockGroup, name = "ReferenceVirtual"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1048,7 +1048,7 @@ function cluster.CodecState:new()
 end
 
 function cluster.CodecState:get_context()
-    return {id = 0xA4, manda = false, parent = cluster.BlockGroup}
+    return {id = 0xA4, manda = false, parent = cluster.BlockGroup, name = "CodecState"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1062,7 +1062,7 @@ function cluster.DiscardPadding:new()
 end
 
 function cluster.DiscardPadding:get_context()
-    return {id = 0x75A2, manda = false, parent = cluster.BlockGroup}
+    return {id = 0x75A2, manda = false, parent = cluster.BlockGroup, name = "DiscardPadding"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1076,7 +1076,7 @@ function cluster.Slices:new()
 end
 
 function cluster.Slices:get_context()
-    return {id = 0x8E, manda = false, parent = cluster.BlockGroup}
+    return {id = 0x8E, manda = false, parent = cluster.BlockGroup, name = "Slices"}
 end
 
 function cluster.Slices:get_semantic()
@@ -1094,7 +1094,7 @@ function cluster.TimeSlice:new()
 end
 
 function cluster.TimeSlice:get_context()
-    return {id = 0xE8, manda = false, parent = cluster.Slices}
+    return {id = 0xE8, manda = false, parent = cluster.Slices, name = "TimeSlice"}
 end
 
 function cluster.TimeSlice:get_semantic()
@@ -1113,7 +1113,7 @@ function cluster.LaceNumber:new()
 end
 
 function cluster.LaceNumber:get_context()
-    return {id = 0xCC, manda = false, parent = cluster.TimeSlice}
+    return {id = 0xCC, manda = false, parent = cluster.TimeSlice, name = "LaceNumber"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1127,7 +1127,7 @@ function cluster.FrameNumber:new()
 end
 
 function cluster.FrameNumber:get_context()
-    return {id = 0xCD, manda = false, parent = cluster.TimeSlice}
+    return {id = 0xCD, manda = false, parent = cluster.TimeSlice, name = "FrameNumber"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1141,7 +1141,7 @@ function cluster.BlockAdditionID:new()
 end
 
 function cluster.BlockAdditionID:get_context()
-    return {id = 0xCB, manda = false, parent = cluster.TimeSlice}
+    return {id = 0xCB, manda = false, parent = cluster.TimeSlice, name = "BlockAdditionID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1155,7 +1155,7 @@ function cluster.Delay:new()
 end
 
 function cluster.Delay:get_context()
-    return {id = 0xCE, manda = false, parent = cluster.TimeSlice}
+    return {id = 0xCE, manda = false, parent = cluster.TimeSlice, name = "Delay"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1169,7 +1169,7 @@ function cluster.SliceDuration:new()
 end
 
 function cluster.SliceDuration:get_context()
-    return {id = 0xCF, manda = false, parent = cluster.TimeSlice}
+    return {id = 0xCF, manda = false, parent = cluster.TimeSlice, name = "SliceDuration"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1183,7 +1183,7 @@ function cluster.ReferenceFrame:new()
 end
 
 function cluster.ReferenceFrame:get_context()
-    return {id = 0xC8, manda = false, parent = cluster.BlockGroup}
+    return {id = 0xC8, manda = false, parent = cluster.BlockGroup, name = "ReferenceFrame"}
 end
 
 function cluster.ReferenceFrame:get_semantic()
@@ -1201,7 +1201,7 @@ function cluster.ReferenceOffset:new()
 end
 
 function cluster.ReferenceOffset:get_context()
-    return {id = 0xC9, manda = true, parent = cluster.ReferenceFrame}
+    return {id = 0xC9, manda = true, parent = cluster.ReferenceFrame, name = "ReferenceOffset"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1215,7 +1215,7 @@ function cluster.ReferenceTimestamp:new()
 end
 
 function cluster.ReferenceTimestamp:get_context()
-    return {id = 0xCA, manda = true, parent = cluster.ReferenceFrame}
+    return {id = 0xCA, manda = true, parent = cluster.ReferenceFrame, name = "ReferenceTimestamp"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1229,7 +1229,7 @@ function cluster.EncryptedBlock:new()
 end
 
 function cluster.EncryptedBlock:get_context()
-    return {id = 0xAF, manda = false, parent = cluster.Cluster}
+    return {id = 0xAF, manda = false, parent = cluster.Cluster, name = "EncryptedBlock"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1243,7 +1243,7 @@ function tracks.Tracks:new()
 end
 
 function tracks.Tracks:get_context()
-    return {id = 0x1654AE6B, manda = false, parent = Segment}
+    return {id = 0x1654AE6B, manda = false, parent = tracks.Segment, name = "Tracks"}
 end
 
 function tracks.Tracks:get_semantic()
@@ -1261,7 +1261,7 @@ function tracks.TrackEntry:new()
 end
 
 function tracks.TrackEntry:get_context()
-    return {id = 0xAE, manda = true, parent = tracks.Tracks}
+    return {id = 0xAE, manda = true, parent = tracks.Tracks, name = "TrackEntry"}
 end
 
 function tracks.TrackEntry:get_semantic()
@@ -1296,7 +1296,7 @@ function tracks.TrackNumber:new()
 end
 
 function tracks.TrackNumber:get_context()
-    return {id = 0xD7, manda = true, parent = tracks.TrackEntry}
+    return {id = 0xD7, manda = true, parent = tracks.TrackEntry, name = "TrackNumber"}
 end
 
 function tracks.TrackNumber:validate_data()
@@ -1314,7 +1314,7 @@ function tracks.TrackUID:new()
 end
 
 function tracks.TrackUID:get_context()
-    return {id = 0x73C5, manda = true, parent = tracks.TrackEntry}
+    return {id = 0x73C5, manda = true, parent = tracks.TrackEntry, name = "TrackUID"}
 end
 
 function tracks.TrackUID:validate_data()
@@ -1332,7 +1332,7 @@ function tracks.TrackType:new()
 end
 
 function tracks.TrackType:get_context()
-    return {id = 0x83, manda = true, parent = tracks.TrackEntry}
+    return {id = 0x83, manda = true, parent = tracks.TrackEntry, name = "TrackType"}
 end
 
 function tracks.TrackType:validate_data()
@@ -1356,7 +1356,7 @@ function tracks.FlagEnabled:new()
 end
 
 function tracks.FlagEnabled:get_context()
-    return {id = 0xB9, manda = true, parent = tracks.TrackEntry}
+    return {id = 0xB9, manda = true, parent = tracks.TrackEntry, name = "FlagEnabled"}
 end
 
 function tracks.FlagEnabled:validate_data()
@@ -1374,7 +1374,7 @@ function tracks.FlagDefault:new()
 end
 
 function tracks.FlagDefault:get_context()
-    return {id = 0x88, manda = true, parent = tracks.TrackEntry}
+    return {id = 0x88, manda = true, parent = tracks.TrackEntry, name = "FlagDefault"}
 end
 
 function tracks.FlagDefault:validate_data()
@@ -1392,7 +1392,7 @@ function tracks.FlagForced:new()
 end
 
 function tracks.FlagForced:get_context()
-    return {id = 0x55AA, manda = true, parent = tracks.TrackEntry}
+    return {id = 0x55AA, manda = true, parent = tracks.TrackEntry, name = "FlagForced"}
 end
 
 function tracks.FlagForced:validate_data()
@@ -1410,7 +1410,7 @@ function tracks.FlagHearingImpaired:new()
 end
 
 function tracks.FlagHearingImpaired:get_context()
-    return {id = 0x55AB, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x55AB, manda = false, parent = tracks.TrackEntry, name = "FlagHearingImpaired"}
 end
 
 function tracks.FlagHearingImpaired:validate_data()
@@ -1428,7 +1428,7 @@ function tracks.FlagVisualImpaired:new()
 end
 
 function tracks.FlagVisualImpaired:get_context()
-    return {id = 0x55AC, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x55AC, manda = false, parent = tracks.TrackEntry, name = "FlagVisualImpaired"}
 end
 
 function tracks.FlagVisualImpaired:validate_data()
@@ -1446,7 +1446,7 @@ function tracks.FlagTextDescriptions:new()
 end
 
 function tracks.FlagTextDescriptions:get_context()
-    return {id = 0x55AD, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x55AD, manda = false, parent = tracks.TrackEntry, name = "FlagTextDescriptions"}
 end
 
 function tracks.FlagTextDescriptions:validate_data()
@@ -1464,7 +1464,7 @@ function tracks.FlagOriginal:new()
 end
 
 function tracks.FlagOriginal:get_context()
-    return {id = 0x55AE, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x55AE, manda = false, parent = tracks.TrackEntry, name = "FlagOriginal"}
 end
 
 function tracks.FlagOriginal:validate_data()
@@ -1482,7 +1482,7 @@ function tracks.FlagCommentary:new()
 end
 
 function tracks.FlagCommentary:get_context()
-    return {id = 0x55AF, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x55AF, manda = false, parent = tracks.TrackEntry, name = "FlagCommentary"}
 end
 
 function tracks.FlagCommentary:validate_data()
@@ -1500,7 +1500,7 @@ function tracks.FlagLacing:new()
 end
 
 function tracks.FlagLacing:get_context()
-    return {id = 0x9C, manda = true, parent = tracks.TrackEntry}
+    return {id = 0x9C, manda = true, parent = tracks.TrackEntry, name = "FlagLacing"}
 end
 
 function tracks.FlagLacing:validate_data()
@@ -1518,7 +1518,7 @@ function tracks.MinCache:new()
 end
 
 function tracks.MinCache:get_context()
-    return {id = 0x6DE7, manda = true, parent = tracks.TrackEntry}
+    return {id = 0x6DE7, manda = true, parent = tracks.TrackEntry, name = "MinCache"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1532,7 +1532,7 @@ function tracks.MaxCache:new()
 end
 
 function tracks.MaxCache:get_context()
-    return {id = 0x6DF8, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x6DF8, manda = false, parent = tracks.TrackEntry, name = "MaxCache"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1546,7 +1546,7 @@ function tracks.DefaultDuration:new()
 end
 
 function tracks.DefaultDuration:get_context()
-    return {id = 0x23E383, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x23E383, manda = false, parent = tracks.TrackEntry, name = "DefaultDuration"}
 end
 
 function tracks.DefaultDuration:validate_data()
@@ -1564,7 +1564,7 @@ function tracks.DefaultDecodedFieldDuration:new()
 end
 
 function tracks.DefaultDecodedFieldDuration:get_context()
-    return {id = 0x234E7A, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x234E7A, manda = false, parent = tracks.TrackEntry, name = "DefaultDecodedFieldDuration"}
 end
 
 function tracks.DefaultDecodedFieldDuration:validate_data()
@@ -1582,7 +1582,7 @@ function tracks.TrackTimestampScale:new()
 end
 
 function tracks.TrackTimestampScale:get_context()
-    return {id = 0x23314F, manda = true, parent = tracks.TrackEntry}
+    return {id = 0x23314F, manda = true, parent = tracks.TrackEntry, name = "TrackTimestampScale"}
 end
 
 function tracks.TrackTimestampScale:validate_data()
@@ -1600,7 +1600,7 @@ function tracks.TrackOffset:new()
 end
 
 function tracks.TrackOffset:get_context()
-    return {id = 0x537F, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x537F, manda = false, parent = tracks.TrackEntry, name = "TrackOffset"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1614,7 +1614,7 @@ function tracks.MaxBlockAdditionID:new()
 end
 
 function tracks.MaxBlockAdditionID:get_context()
-    return {id = 0x55EE, manda = true, parent = tracks.TrackEntry}
+    return {id = 0x55EE, manda = true, parent = tracks.TrackEntry, name = "MaxBlockAdditionID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1628,7 +1628,7 @@ function tracks.BlockAdditionMapping:new()
 end
 
 function tracks.BlockAdditionMapping:get_context()
-    return {id = 0x41E4, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x41E4, manda = false, parent = tracks.TrackEntry, name = "BlockAdditionMapping"}
 end
 
 function tracks.BlockAdditionMapping:get_semantic()
@@ -1647,7 +1647,7 @@ function tracks.BlockAddIDValue:new()
 end
 
 function tracks.BlockAddIDValue:get_context()
-    return {id = 0x41F0, manda = false, parent = tracks.BlockAdditionMapping}
+    return {id = 0x41F0, manda = false, parent = tracks.BlockAdditionMapping, name = "BlockAddIDValue"}
 end
 
 function tracks.BlockAddIDValue:validate_data()
@@ -1665,7 +1665,7 @@ function tracks.BlockAddIDName:new()
 end
 
 function tracks.BlockAddIDName:get_context()
-    return {id = 0x41A4, manda = false, parent = tracks.BlockAdditionMapping}
+    return {id = 0x41A4, manda = false, parent = tracks.BlockAdditionMapping, name = "BlockAddIDName"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1679,7 +1679,7 @@ function tracks.BlockAddIDType:new()
 end
 
 function tracks.BlockAddIDType:get_context()
-    return {id = 0x41E7, manda = true, parent = tracks.BlockAdditionMapping}
+    return {id = 0x41E7, manda = true, parent = tracks.BlockAdditionMapping, name = "BlockAddIDType"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1693,7 +1693,7 @@ function tracks.BlockAddIDExtraData:new()
 end
 
 function tracks.BlockAddIDExtraData:get_context()
-    return {id = 0x41ED, manda = false, parent = tracks.BlockAdditionMapping}
+    return {id = 0x41ED, manda = false, parent = tracks.BlockAdditionMapping, name = "BlockAddIDExtraData"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1707,7 +1707,7 @@ function tracks.Name:new()
 end
 
 function tracks.Name:get_context()
-    return {id = 0x536E, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x536E, manda = false, parent = tracks.TrackEntry, name = "Name"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1721,7 +1721,7 @@ function tracks.Language:new()
 end
 
 function tracks.Language:get_context()
-    return {id = 0x22B59C, manda = true, parent = tracks.TrackEntry}
+    return {id = 0x22B59C, manda = true, parent = tracks.TrackEntry, name = "Language"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1735,7 +1735,7 @@ function tracks.LanguageBCP47:new()
 end
 
 function tracks.LanguageBCP47:get_context()
-    return {id = 0x22B59D, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x22B59D, manda = false, parent = tracks.TrackEntry, name = "LanguageBCP47"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1749,7 +1749,7 @@ function tracks.CodecID:new()
 end
 
 function tracks.CodecID:get_context()
-    return {id = 0x86, manda = true, parent = tracks.TrackEntry}
+    return {id = 0x86, manda = true, parent = tracks.TrackEntry, name = "CodecID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1763,7 +1763,7 @@ function tracks.CodecPrivate:new()
 end
 
 function tracks.CodecPrivate:get_context()
-    return {id = 0x63A2, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x63A2, manda = false, parent = tracks.TrackEntry, name = "CodecPrivate"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1777,7 +1777,7 @@ function tracks.CodecName:new()
 end
 
 function tracks.CodecName:get_context()
-    return {id = 0x258688, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x258688, manda = false, parent = tracks.TrackEntry, name = "CodecName"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1791,7 +1791,7 @@ function tracks.AttachmentLink:new()
 end
 
 function tracks.AttachmentLink:get_context()
-    return {id = 0x7446, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x7446, manda = false, parent = tracks.TrackEntry, name = "AttachmentLink"}
 end
 
 function tracks.AttachmentLink:validate_data()
@@ -1809,7 +1809,7 @@ function tracks.CodecSettings:new()
 end
 
 function tracks.CodecSettings:get_context()
-    return {id = 0x3A9697, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x3A9697, manda = false, parent = tracks.TrackEntry, name = "CodecSettings"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1823,7 +1823,7 @@ function tracks.CodecInfoURL:new()
 end
 
 function tracks.CodecInfoURL:get_context()
-    return {id = 0x3B4040, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x3B4040, manda = false, parent = tracks.TrackEntry, name = "CodecInfoURL"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1837,7 +1837,7 @@ function tracks.CodecDownloadURL:new()
 end
 
 function tracks.CodecDownloadURL:get_context()
-    return {id = 0x26B240, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x26B240, manda = false, parent = tracks.TrackEntry, name = "CodecDownloadURL"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1851,7 +1851,7 @@ function tracks.CodecDecodeAll:new()
 end
 
 function tracks.CodecDecodeAll:get_context()
-    return {id = 0xAA, manda = true, parent = tracks.TrackEntry}
+    return {id = 0xAA, manda = true, parent = tracks.TrackEntry, name = "CodecDecodeAll"}
 end
 
 function tracks.CodecDecodeAll:validate_data()
@@ -1869,7 +1869,7 @@ function tracks.TrackOverlay:new()
 end
 
 function tracks.TrackOverlay:get_context()
-    return {id = 0x6FAB, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x6FAB, manda = false, parent = tracks.TrackEntry, name = "TrackOverlay"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1883,7 +1883,7 @@ function tracks.CodecDelay:new()
 end
 
 function tracks.CodecDelay:get_context()
-    return {id = 0x56AA, manda = true, parent = tracks.TrackEntry}
+    return {id = 0x56AA, manda = true, parent = tracks.TrackEntry, name = "CodecDelay"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1897,7 +1897,7 @@ function tracks.SeekPreRoll:new()
 end
 
 function tracks.SeekPreRoll:get_context()
-    return {id = 0x56BB, manda = true, parent = tracks.TrackEntry}
+    return {id = 0x56BB, manda = true, parent = tracks.TrackEntry, name = "SeekPreRoll"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1911,7 +1911,7 @@ function tracks.TrackTranslate:new()
 end
 
 function tracks.TrackTranslate:get_context()
-    return {id = 0x6624, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x6624, manda = false, parent = tracks.TrackEntry, name = "TrackTranslate"}
 end
 
 function tracks.TrackTranslate:get_semantic()
@@ -1930,7 +1930,7 @@ function tracks.TrackTranslateTrackID:new()
 end
 
 function tracks.TrackTranslateTrackID:get_context()
-    return {id = 0x66A5, manda = true, parent = tracks.TrackTranslate}
+    return {id = 0x66A5, manda = true, parent = tracks.TrackTranslate, name = "TrackTranslateTrackID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1944,7 +1944,7 @@ function tracks.TrackTranslateCodec:new()
 end
 
 function tracks.TrackTranslateCodec:get_context()
-    return {id = 0x66BF, manda = true, parent = tracks.TrackTranslate}
+    return {id = 0x66BF, manda = true, parent = tracks.TrackTranslate, name = "TrackTranslateCodec"}
 end
 
 function tracks.TrackTranslateCodec:validate_data()
@@ -1962,7 +1962,7 @@ function tracks.TrackTranslateEditionUID:new()
 end
 
 function tracks.TrackTranslateEditionUID:get_context()
-    return {id = 0x66FC, manda = false, parent = tracks.TrackTranslate}
+    return {id = 0x66FC, manda = false, parent = tracks.TrackTranslate, name = "TrackTranslateEditionUID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -1976,7 +1976,7 @@ function tracks.Video:new()
 end
 
 function tracks.Video:get_context()
-    return {id = 0xE0, manda = false, parent = tracks.TrackEntry}
+    return {id = 0xE0, manda = false, parent = tracks.TrackEntry, name = "Video"}
 end
 
 function tracks.Video:get_semantic()
@@ -2000,7 +2000,7 @@ function tracks.FlagInterlaced:new()
 end
 
 function tracks.FlagInterlaced:get_context()
-    return {id = 0x9A, manda = true, parent = tracks.Video}
+    return {id = 0x9A, manda = true, parent = tracks.Video, name = "FlagInterlaced"}
 end
 
 function tracks.FlagInterlaced:validate_data()
@@ -2018,7 +2018,7 @@ function tracks.FieldOrder:new()
 end
 
 function tracks.FieldOrder:get_context()
-    return {id = 0x9D, manda = true, parent = tracks.Video}
+    return {id = 0x9D, manda = true, parent = tracks.Video, name = "FieldOrder"}
 end
 
 function tracks.FieldOrder:validate_data()
@@ -2042,7 +2042,7 @@ function tracks.StereoMode:new()
 end
 
 function tracks.StereoMode:get_context()
-    return {id = 0x53B8, manda = true, parent = tracks.Video}
+    return {id = 0x53B8, manda = true, parent = tracks.Video, name = "StereoMode"}
 end
 
 function tracks.StereoMode:validate_data()
@@ -2060,7 +2060,7 @@ function tracks.AlphaMode:new()
 end
 
 function tracks.AlphaMode:get_context()
-    return {id = 0x53C0, manda = true, parent = tracks.Video}
+    return {id = 0x53C0, manda = true, parent = tracks.Video, name = "AlphaMode"}
 end
 
 function tracks.AlphaMode:validate_data()
@@ -2078,7 +2078,7 @@ function tracks.OldStereoMode:new()
 end
 
 function tracks.OldStereoMode:get_context()
-    return {id = 0x53B9, manda = false, parent = tracks.Video}
+    return {id = 0x53B9, manda = false, parent = tracks.Video, name = "OldStereoMode"}
 end
 
 function tracks.OldStereoMode:validate_data()
@@ -2096,7 +2096,7 @@ function tracks.PixelWidth:new()
 end
 
 function tracks.PixelWidth:get_context()
-    return {id = 0xB0, manda = true, parent = tracks.Video}
+    return {id = 0xB0, manda = true, parent = tracks.Video, name = "PixelWidth"}
 end
 
 function tracks.PixelWidth:validate_data()
@@ -2114,7 +2114,7 @@ function tracks.PixelHeight:new()
 end
 
 function tracks.PixelHeight:get_context()
-    return {id = 0xBA, manda = true, parent = tracks.Video}
+    return {id = 0xBA, manda = true, parent = tracks.Video, name = "PixelHeight"}
 end
 
 function tracks.PixelHeight:validate_data()
@@ -2132,7 +2132,7 @@ function tracks.PixelCropBottom:new()
 end
 
 function tracks.PixelCropBottom:get_context()
-    return {id = 0x54AA, manda = true, parent = tracks.Video}
+    return {id = 0x54AA, manda = true, parent = tracks.Video, name = "PixelCropBottom"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2146,7 +2146,7 @@ function tracks.PixelCropTop:new()
 end
 
 function tracks.PixelCropTop:get_context()
-    return {id = 0x54BB, manda = true, parent = tracks.Video}
+    return {id = 0x54BB, manda = true, parent = tracks.Video, name = "PixelCropTop"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2160,7 +2160,7 @@ function tracks.PixelCropLeft:new()
 end
 
 function tracks.PixelCropLeft:get_context()
-    return {id = 0x54CC, manda = true, parent = tracks.Video}
+    return {id = 0x54CC, manda = true, parent = tracks.Video, name = "PixelCropLeft"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2174,7 +2174,7 @@ function tracks.PixelCropRight:new()
 end
 
 function tracks.PixelCropRight:get_context()
-    return {id = 0x54DD, manda = true, parent = tracks.Video}
+    return {id = 0x54DD, manda = true, parent = tracks.Video, name = "PixelCropRight"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2188,7 +2188,7 @@ function tracks.DisplayWidth:new()
 end
 
 function tracks.DisplayWidth:get_context()
-    return {id = 0x54B0, manda = false, parent = tracks.Video}
+    return {id = 0x54B0, manda = false, parent = tracks.Video, name = "DisplayWidth"}
 end
 
 function tracks.DisplayWidth:validate_data()
@@ -2206,7 +2206,7 @@ function tracks.DisplayHeight:new()
 end
 
 function tracks.DisplayHeight:get_context()
-    return {id = 0x54BA, manda = false, parent = tracks.Video}
+    return {id = 0x54BA, manda = false, parent = tracks.Video, name = "DisplayHeight"}
 end
 
 function tracks.DisplayHeight:validate_data()
@@ -2224,7 +2224,7 @@ function tracks.DisplayUnit:new()
 end
 
 function tracks.DisplayUnit:get_context()
-    return {id = 0x54B2, manda = true, parent = tracks.Video}
+    return {id = 0x54B2, manda = true, parent = tracks.Video, name = "DisplayUnit"}
 end
 
 function tracks.DisplayUnit:validate_data()
@@ -2242,7 +2242,7 @@ function tracks.AspectRatioType:new()
 end
 
 function tracks.AspectRatioType:get_context()
-    return {id = 0x54B3, manda = false, parent = tracks.Video}
+    return {id = 0x54B3, manda = false, parent = tracks.Video, name = "AspectRatioType"}
 end
 
 function tracks.AspectRatioType:validate_data()
@@ -2260,7 +2260,7 @@ function tracks.UncompressedFourCC:new()
 end
 
 function tracks.UncompressedFourCC:get_context()
-    return {id = 0x2EB524, manda = false, parent = tracks.Video}
+    return {id = 0x2EB524, manda = false, parent = tracks.Video, name = "UncompressedFourCC"}
 end
 
 function tracks.UncompressedFourCC:validate_data_size()
@@ -2278,7 +2278,7 @@ function tracks.GammaValue:new()
 end
 
 function tracks.GammaValue:get_context()
-    return {id = 0x2FB523, manda = false, parent = tracks.Video}
+    return {id = 0x2FB523, manda = false, parent = tracks.Video, name = "GammaValue"}
 end
 
 function tracks.GammaValue:validate_data()
@@ -2296,7 +2296,7 @@ function tracks.FrameRate:new()
 end
 
 function tracks.FrameRate:get_context()
-    return {id = 0x2383E3, manda = false, parent = tracks.Video}
+    return {id = 0x2383E3, manda = false, parent = tracks.Video, name = "FrameRate"}
 end
 
 function tracks.FrameRate:validate_data()
@@ -2314,7 +2314,7 @@ function tracks.Colour:new()
 end
 
 function tracks.Colour:get_context()
-    return {id = 0x55B0, manda = false, parent = tracks.Video}
+    return {id = 0x55B0, manda = false, parent = tracks.Video, name = "Colour"}
 end
 
 function tracks.Colour:get_semantic()
@@ -2337,7 +2337,7 @@ function tracks.MatrixCoefficients:new()
 end
 
 function tracks.MatrixCoefficients:get_context()
-    return {id = 0x55B1, manda = true, parent = tracks.Colour}
+    return {id = 0x55B1, manda = true, parent = tracks.Colour, name = "MatrixCoefficients"}
 end
 
 function tracks.MatrixCoefficients:validate_data()
@@ -2355,7 +2355,7 @@ function tracks.BitsPerChannel:new()
 end
 
 function tracks.BitsPerChannel:get_context()
-    return {id = 0x55B2, manda = true, parent = tracks.Colour}
+    return {id = 0x55B2, manda = true, parent = tracks.Colour, name = "BitsPerChannel"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2369,7 +2369,7 @@ function tracks.ChromaSubsamplingHorz:new()
 end
 
 function tracks.ChromaSubsamplingHorz:get_context()
-    return {id = 0x55B3, manda = false, parent = tracks.Colour}
+    return {id = 0x55B3, manda = false, parent = tracks.Colour, name = "ChromaSubsamplingHorz"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2383,7 +2383,7 @@ function tracks.ChromaSubsamplingVert:new()
 end
 
 function tracks.ChromaSubsamplingVert:get_context()
-    return {id = 0x55B4, manda = false, parent = tracks.Colour}
+    return {id = 0x55B4, manda = false, parent = tracks.Colour, name = "ChromaSubsamplingVert"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2397,7 +2397,7 @@ function tracks.CbSubsamplingHorz:new()
 end
 
 function tracks.CbSubsamplingHorz:get_context()
-    return {id = 0x55B5, manda = false, parent = tracks.Colour}
+    return {id = 0x55B5, manda = false, parent = tracks.Colour, name = "CbSubsamplingHorz"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2411,7 +2411,7 @@ function tracks.CbSubsamplingVert:new()
 end
 
 function tracks.CbSubsamplingVert:get_context()
-    return {id = 0x55B6, manda = false, parent = tracks.Colour}
+    return {id = 0x55B6, manda = false, parent = tracks.Colour, name = "CbSubsamplingVert"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2425,7 +2425,7 @@ function tracks.ChromaSitingHorz:new()
 end
 
 function tracks.ChromaSitingHorz:get_context()
-    return {id = 0x55B7, manda = true, parent = tracks.Colour}
+    return {id = 0x55B7, manda = true, parent = tracks.Colour, name = "ChromaSitingHorz"}
 end
 
 function tracks.ChromaSitingHorz:validate_data()
@@ -2443,7 +2443,7 @@ function tracks.ChromaSitingVert:new()
 end
 
 function tracks.ChromaSitingVert:get_context()
-    return {id = 0x55B8, manda = true, parent = tracks.Colour}
+    return {id = 0x55B8, manda = true, parent = tracks.Colour, name = "ChromaSitingVert"}
 end
 
 function tracks.ChromaSitingVert:validate_data()
@@ -2461,7 +2461,7 @@ function tracks.Range:new()
 end
 
 function tracks.Range:get_context()
-    return {id = 0x55B9, manda = true, parent = tracks.Colour}
+    return {id = 0x55B9, manda = true, parent = tracks.Colour, name = "Range"}
 end
 
 function tracks.Range:validate_data()
@@ -2479,7 +2479,7 @@ function tracks.TransferCharacteristics:new()
 end
 
 function tracks.TransferCharacteristics:get_context()
-    return {id = 0x55BA, manda = true, parent = tracks.Colour}
+    return {id = 0x55BA, manda = true, parent = tracks.Colour, name = "TransferCharacteristics"}
 end
 
 function tracks.TransferCharacteristics:validate_data()
@@ -2497,7 +2497,7 @@ function tracks.Primaries:new()
 end
 
 function tracks.Primaries:get_context()
-    return {id = 0x55BB, manda = true, parent = tracks.Colour}
+    return {id = 0x55BB, manda = true, parent = tracks.Colour, name = "Primaries"}
 end
 
 function tracks.Primaries:validate_data()
@@ -2521,7 +2521,7 @@ function tracks.MaxCLL:new()
 end
 
 function tracks.MaxCLL:get_context()
-    return {id = 0x55BC, manda = false, parent = tracks.Colour}
+    return {id = 0x55BC, manda = false, parent = tracks.Colour, name = "MaxCLL"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2535,7 +2535,7 @@ function tracks.MaxFALL:new()
 end
 
 function tracks.MaxFALL:get_context()
-    return {id = 0x55BD, manda = false, parent = tracks.Colour}
+    return {id = 0x55BD, manda = false, parent = tracks.Colour, name = "MaxFALL"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2549,7 +2549,7 @@ function tracks.MasteringMetadata:new()
 end
 
 function tracks.MasteringMetadata:get_context()
-    return {id = 0x55D0, manda = false, parent = tracks.Colour}
+    return {id = 0x55D0, manda = false, parent = tracks.Colour, name = "MasteringMetadata"}
 end
 
 function tracks.MasteringMetadata:get_semantic()
@@ -2571,7 +2571,7 @@ function tracks.PrimaryRChromaticityX:new()
 end
 
 function tracks.PrimaryRChromaticityX:get_context()
-    return {id = 0x55D1, manda = false, parent = tracks.MasteringMetadata}
+    return {id = 0x55D1, manda = false, parent = tracks.MasteringMetadata, name = "PrimaryRChromaticityX"}
 end
 
 function tracks.PrimaryRChromaticityX:validate_data()
@@ -2589,7 +2589,7 @@ function tracks.PrimaryRChromaticityY:new()
 end
 
 function tracks.PrimaryRChromaticityY:get_context()
-    return {id = 0x55D2, manda = false, parent = tracks.MasteringMetadata}
+    return {id = 0x55D2, manda = false, parent = tracks.MasteringMetadata, name = "PrimaryRChromaticityY"}
 end
 
 function tracks.PrimaryRChromaticityY:validate_data()
@@ -2607,7 +2607,7 @@ function tracks.PrimaryGChromaticityX:new()
 end
 
 function tracks.PrimaryGChromaticityX:get_context()
-    return {id = 0x55D3, manda = false, parent = tracks.MasteringMetadata}
+    return {id = 0x55D3, manda = false, parent = tracks.MasteringMetadata, name = "PrimaryGChromaticityX"}
 end
 
 function tracks.PrimaryGChromaticityX:validate_data()
@@ -2625,7 +2625,7 @@ function tracks.PrimaryGChromaticityY:new()
 end
 
 function tracks.PrimaryGChromaticityY:get_context()
-    return {id = 0x55D4, manda = false, parent = tracks.MasteringMetadata}
+    return {id = 0x55D4, manda = false, parent = tracks.MasteringMetadata, name = "PrimaryGChromaticityY"}
 end
 
 function tracks.PrimaryGChromaticityY:validate_data()
@@ -2643,7 +2643,7 @@ function tracks.PrimaryBChromaticityX:new()
 end
 
 function tracks.PrimaryBChromaticityX:get_context()
-    return {id = 0x55D5, manda = false, parent = tracks.MasteringMetadata}
+    return {id = 0x55D5, manda = false, parent = tracks.MasteringMetadata, name = "PrimaryBChromaticityX"}
 end
 
 function tracks.PrimaryBChromaticityX:validate_data()
@@ -2661,7 +2661,7 @@ function tracks.PrimaryBChromaticityY:new()
 end
 
 function tracks.PrimaryBChromaticityY:get_context()
-    return {id = 0x55D6, manda = false, parent = tracks.MasteringMetadata}
+    return {id = 0x55D6, manda = false, parent = tracks.MasteringMetadata, name = "PrimaryBChromaticityY"}
 end
 
 function tracks.PrimaryBChromaticityY:validate_data()
@@ -2679,7 +2679,7 @@ function tracks.WhitePointChromaticityX:new()
 end
 
 function tracks.WhitePointChromaticityX:get_context()
-    return {id = 0x55D7, manda = false, parent = tracks.MasteringMetadata}
+    return {id = 0x55D7, manda = false, parent = tracks.MasteringMetadata, name = "WhitePointChromaticityX"}
 end
 
 function tracks.WhitePointChromaticityX:validate_data()
@@ -2697,7 +2697,7 @@ function tracks.WhitePointChromaticityY:new()
 end
 
 function tracks.WhitePointChromaticityY:get_context()
-    return {id = 0x55D8, manda = false, parent = tracks.MasteringMetadata}
+    return {id = 0x55D8, manda = false, parent = tracks.MasteringMetadata, name = "WhitePointChromaticityY"}
 end
 
 function tracks.WhitePointChromaticityY:validate_data()
@@ -2715,7 +2715,7 @@ function tracks.LuminanceMax:new()
 end
 
 function tracks.LuminanceMax:get_context()
-    return {id = 0x55D9, manda = false, parent = tracks.MasteringMetadata}
+    return {id = 0x55D9, manda = false, parent = tracks.MasteringMetadata, name = "LuminanceMax"}
 end
 
 function tracks.LuminanceMax:validate_data()
@@ -2733,7 +2733,7 @@ function tracks.LuminanceMin:new()
 end
 
 function tracks.LuminanceMin:get_context()
-    return {id = 0x55DA, manda = false, parent = tracks.MasteringMetadata}
+    return {id = 0x55DA, manda = false, parent = tracks.MasteringMetadata, name = "LuminanceMin"}
 end
 
 function tracks.LuminanceMin:validate_data()
@@ -2751,7 +2751,7 @@ function tracks.Projection:new()
 end
 
 function tracks.Projection:get_context()
-    return {id = 0x7670, manda = false, parent = tracks.Video}
+    return {id = 0x7670, manda = false, parent = tracks.Video, name = "Projection"}
 end
 
 function tracks.Projection:get_semantic()
@@ -2771,7 +2771,7 @@ function tracks.ProjectionType:new()
 end
 
 function tracks.ProjectionType:get_context()
-    return {id = 0x7671, manda = true, parent = tracks.Projection}
+    return {id = 0x7671, manda = true, parent = tracks.Projection, name = "ProjectionType"}
 end
 
 function tracks.ProjectionType:validate_data()
@@ -2789,7 +2789,7 @@ function tracks.ProjectionPrivate:new()
 end
 
 function tracks.ProjectionPrivate:get_context()
-    return {id = 0x7672, manda = false, parent = tracks.Projection}
+    return {id = 0x7672, manda = false, parent = tracks.Projection, name = "ProjectionPrivate"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2803,7 +2803,7 @@ function tracks.ProjectionPoseYaw:new()
 end
 
 function tracks.ProjectionPoseYaw:get_context()
-    return {id = 0x7673, manda = true, parent = tracks.Projection}
+    return {id = 0x7673, manda = true, parent = tracks.Projection, name = "ProjectionPoseYaw"}
 end
 
 function tracks.ProjectionPoseYaw:validate_data()
@@ -2821,7 +2821,7 @@ function tracks.ProjectionPosePitch:new()
 end
 
 function tracks.ProjectionPosePitch:get_context()
-    return {id = 0x7674, manda = true, parent = tracks.Projection}
+    return {id = 0x7674, manda = true, parent = tracks.Projection, name = "ProjectionPosePitch"}
 end
 
 function tracks.ProjectionPosePitch:validate_data()
@@ -2839,7 +2839,7 @@ function tracks.ProjectionPoseRoll:new()
 end
 
 function tracks.ProjectionPoseRoll:get_context()
-    return {id = 0x7675, manda = true, parent = tracks.Projection}
+    return {id = 0x7675, manda = true, parent = tracks.Projection, name = "ProjectionPoseRoll"}
 end
 
 function tracks.ProjectionPoseRoll:validate_data()
@@ -2857,7 +2857,7 @@ function tracks.Audio:new()
 end
 
 function tracks.Audio:get_context()
-    return {id = 0xE1, manda = false, parent = tracks.TrackEntry}
+    return {id = 0xE1, manda = false, parent = tracks.TrackEntry, name = "Audio"}
 end
 
 function tracks.Audio:get_semantic()
@@ -2877,7 +2877,7 @@ function tracks.SamplingFrequency:new()
 end
 
 function tracks.SamplingFrequency:get_context()
-    return {id = 0xB5, manda = true, parent = tracks.Audio}
+    return {id = 0xB5, manda = true, parent = tracks.Audio, name = "SamplingFrequency"}
 end
 
 function tracks.SamplingFrequency:validate_data()
@@ -2895,7 +2895,7 @@ function tracks.OutputSamplingFrequency:new()
 end
 
 function tracks.OutputSamplingFrequency:get_context()
-    return {id = 0x78B5, manda = false, parent = tracks.Audio}
+    return {id = 0x78B5, manda = false, parent = tracks.Audio, name = "OutputSamplingFrequency"}
 end
 
 function tracks.OutputSamplingFrequency:validate_data()
@@ -2913,7 +2913,7 @@ function tracks.Channels:new()
 end
 
 function tracks.Channels:get_context()
-    return {id = 0x9F, manda = true, parent = tracks.Audio}
+    return {id = 0x9F, manda = true, parent = tracks.Audio, name = "Channels"}
 end
 
 function tracks.Channels:validate_data()
@@ -2931,7 +2931,7 @@ function tracks.ChannelPositions:new()
 end
 
 function tracks.ChannelPositions:get_context()
-    return {id = 0x7D7B, manda = false, parent = tracks.Audio}
+    return {id = 0x7D7B, manda = false, parent = tracks.Audio, name = "ChannelPositions"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -2945,7 +2945,7 @@ function tracks.BitDepth:new()
 end
 
 function tracks.BitDepth:get_context()
-    return {id = 0x6264, manda = false, parent = tracks.Audio}
+    return {id = 0x6264, manda = false, parent = tracks.Audio, name = "BitDepth"}
 end
 
 function tracks.BitDepth:validate_data()
@@ -2963,7 +2963,7 @@ function tracks.Emphasis:new()
 end
 
 function tracks.Emphasis:get_context()
-    return {id = 0x52F1, manda = true, parent = tracks.Audio}
+    return {id = 0x52F1, manda = true, parent = tracks.Audio, name = "Emphasis"}
 end
 
 function tracks.Emphasis:validate_data()
@@ -2987,7 +2987,7 @@ function tracks.TrackOperation:new()
 end
 
 function tracks.TrackOperation:get_context()
-    return {id = 0xE2, manda = false, parent = tracks.TrackEntry}
+    return {id = 0xE2, manda = false, parent = tracks.TrackEntry, name = "TrackOperation"}
 end
 
 function tracks.TrackOperation:get_semantic()
@@ -3005,7 +3005,7 @@ function tracks.TrackCombinePlanes:new()
 end
 
 function tracks.TrackCombinePlanes:get_context()
-    return {id = 0xE3, manda = false, parent = tracks.TrackOperation}
+    return {id = 0xE3, manda = false, parent = tracks.TrackOperation, name = "TrackCombinePlanes"}
 end
 
 function tracks.TrackCombinePlanes:get_semantic()
@@ -3023,7 +3023,7 @@ function tracks.TrackPlane:new()
 end
 
 function tracks.TrackPlane:get_context()
-    return {id = 0xE4, manda = true, parent = tracks.TrackCombinePlanes}
+    return {id = 0xE4, manda = true, parent = tracks.TrackCombinePlanes, name = "TrackPlane"}
 end
 
 function tracks.TrackPlane:get_semantic()
@@ -3041,7 +3041,7 @@ function tracks.TrackPlaneUID:new()
 end
 
 function tracks.TrackPlaneUID:get_context()
-    return {id = 0xE5, manda = true, parent = tracks.TrackPlane}
+    return {id = 0xE5, manda = true, parent = tracks.TrackPlane, name = "TrackPlaneUID"}
 end
 
 function tracks.TrackPlaneUID:validate_data()
@@ -3059,7 +3059,7 @@ function tracks.TrackPlaneType:new()
 end
 
 function tracks.TrackPlaneType:get_context()
-    return {id = 0xE6, manda = true, parent = tracks.TrackPlane}
+    return {id = 0xE6, manda = true, parent = tracks.TrackPlane, name = "TrackPlaneType"}
 end
 
 function tracks.TrackPlaneType:validate_data()
@@ -3077,7 +3077,7 @@ function tracks.TrackJoinBlocks:new()
 end
 
 function tracks.TrackJoinBlocks:get_context()
-    return {id = 0xE9, manda = false, parent = tracks.TrackOperation}
+    return {id = 0xE9, manda = false, parent = tracks.TrackOperation, name = "TrackJoinBlocks"}
 end
 
 function tracks.TrackJoinBlocks:get_semantic()
@@ -3095,7 +3095,7 @@ function tracks.TrackJoinUID:new()
 end
 
 function tracks.TrackJoinUID:get_context()
-    return {id = 0xED, manda = true, parent = tracks.TrackJoinBlocks}
+    return {id = 0xED, manda = true, parent = tracks.TrackJoinBlocks, name = "TrackJoinUID"}
 end
 
 function tracks.TrackJoinUID:validate_data()
@@ -3113,7 +3113,7 @@ function tracks.TrickTrackUID:new()
 end
 
 function tracks.TrickTrackUID:get_context()
-    return {id = 0xC0, manda = false, parent = tracks.TrackEntry}
+    return {id = 0xC0, manda = false, parent = tracks.TrackEntry, name = "TrickTrackUID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3127,7 +3127,7 @@ function tracks.TrickTrackSegmentUID:new()
 end
 
 function tracks.TrickTrackSegmentUID:get_context()
-    return {id = 0xC1, manda = false, parent = tracks.TrackEntry}
+    return {id = 0xC1, manda = false, parent = tracks.TrackEntry, name = "TrickTrackSegmentUID"}
 end
 
 function tracks.TrickTrackSegmentUID:validate_data_size()
@@ -3145,7 +3145,7 @@ function tracks.TrickTrackFlag:new()
 end
 
 function tracks.TrickTrackFlag:get_context()
-    return {id = 0xC6, manda = false, parent = tracks.TrackEntry}
+    return {id = 0xC6, manda = false, parent = tracks.TrackEntry, name = "TrickTrackFlag"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3159,7 +3159,7 @@ function tracks.TrickMasterTrackUID:new()
 end
 
 function tracks.TrickMasterTrackUID:get_context()
-    return {id = 0xC7, manda = false, parent = tracks.TrackEntry}
+    return {id = 0xC7, manda = false, parent = tracks.TrackEntry, name = "TrickMasterTrackUID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3173,7 +3173,7 @@ function tracks.TrickMasterTrackSegmentUID:new()
 end
 
 function tracks.TrickMasterTrackSegmentUID:get_context()
-    return {id = 0xC4, manda = false, parent = tracks.TrackEntry}
+    return {id = 0xC4, manda = false, parent = tracks.TrackEntry, name = "TrickMasterTrackSegmentUID"}
 end
 
 function tracks.TrickMasterTrackSegmentUID:validate_data_size()
@@ -3191,7 +3191,7 @@ function tracks.ContentEncodings:new()
 end
 
 function tracks.ContentEncodings:get_context()
-    return {id = 0x6D80, manda = false, parent = tracks.TrackEntry}
+    return {id = 0x6D80, manda = false, parent = tracks.TrackEntry, name = "ContentEncodings"}
 end
 
 function tracks.ContentEncodings:get_semantic()
@@ -3209,7 +3209,7 @@ function tracks.ContentEncoding:new()
 end
 
 function tracks.ContentEncoding:get_context()
-    return {id = 0x6240, manda = true, parent = tracks.ContentEncodings}
+    return {id = 0x6240, manda = true, parent = tracks.ContentEncodings, name = "ContentEncoding"}
 end
 
 function tracks.ContentEncoding:get_semantic()
@@ -3229,7 +3229,7 @@ function tracks.ContentEncodingOrder:new()
 end
 
 function tracks.ContentEncodingOrder:get_context()
-    return {id = 0x5031, manda = true, parent = tracks.ContentEncoding}
+    return {id = 0x5031, manda = true, parent = tracks.ContentEncoding, name = "ContentEncodingOrder"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3243,7 +3243,7 @@ function tracks.ContentEncodingScope:new()
 end
 
 function tracks.ContentEncodingScope:get_context()
-    return {id = 0x5032, manda = true, parent = tracks.ContentEncoding}
+    return {id = 0x5032, manda = true, parent = tracks.ContentEncoding, name = "ContentEncodingScope"}
 end
 
 function tracks.ContentEncodingScope:validate_data()
@@ -3267,7 +3267,7 @@ function tracks.ContentEncodingType:new()
 end
 
 function tracks.ContentEncodingType:get_context()
-    return {id = 0x5033, manda = true, parent = tracks.ContentEncoding}
+    return {id = 0x5033, manda = true, parent = tracks.ContentEncoding, name = "ContentEncodingType"}
 end
 
 function tracks.ContentEncodingType:validate_data()
@@ -3285,7 +3285,7 @@ function tracks.ContentCompression:new()
 end
 
 function tracks.ContentCompression:get_context()
-    return {id = 0x5034, manda = false, parent = tracks.ContentEncoding}
+    return {id = 0x5034, manda = false, parent = tracks.ContentEncoding, name = "ContentCompression"}
 end
 
 function tracks.ContentCompression:get_semantic()
@@ -3303,7 +3303,7 @@ function tracks.ContentCompAlgo:new()
 end
 
 function tracks.ContentCompAlgo:get_context()
-    return {id = 0x4254, manda = true, parent = tracks.ContentCompression}
+    return {id = 0x4254, manda = true, parent = tracks.ContentCompression, name = "ContentCompAlgo"}
 end
 
 function tracks.ContentCompAlgo:validate_data()
@@ -3321,7 +3321,7 @@ function tracks.ContentCompSettings:new()
 end
 
 function tracks.ContentCompSettings:get_context()
-    return {id = 0x4255, manda = false, parent = tracks.ContentCompression}
+    return {id = 0x4255, manda = false, parent = tracks.ContentCompression, name = "ContentCompSettings"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3335,7 +3335,7 @@ function tracks.ContentEncryption:new()
 end
 
 function tracks.ContentEncryption:get_context()
-    return {id = 0x5035, manda = false, parent = tracks.ContentEncoding}
+    return {id = 0x5035, manda = false, parent = tracks.ContentEncoding, name = "ContentEncryption"}
 end
 
 function tracks.ContentEncryption:get_semantic()
@@ -3356,7 +3356,7 @@ function tracks.ContentEncAlgo:new()
 end
 
 function tracks.ContentEncAlgo:get_context()
-    return {id = 0x47E1, manda = true, parent = tracks.ContentEncryption}
+    return {id = 0x47E1, manda = true, parent = tracks.ContentEncryption, name = "ContentEncAlgo"}
 end
 
 function tracks.ContentEncAlgo:validate_data()
@@ -3374,7 +3374,7 @@ function tracks.ContentEncKeyID:new()
 end
 
 function tracks.ContentEncKeyID:get_context()
-    return {id = 0x47E2, manda = false, parent = tracks.ContentEncryption}
+    return {id = 0x47E2, manda = false, parent = tracks.ContentEncryption, name = "ContentEncKeyID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3388,7 +3388,7 @@ function tracks.ContentEncAESSettings:new()
 end
 
 function tracks.ContentEncAESSettings:get_context()
-    return {id = 0x47E7, manda = false, parent = tracks.ContentEncryption}
+    return {id = 0x47E7, manda = false, parent = tracks.ContentEncryption, name = "ContentEncAESSettings"}
 end
 
 function tracks.ContentEncAESSettings:get_semantic()
@@ -3406,7 +3406,7 @@ function tracks.AESSettingsCipherMode:new()
 end
 
 function tracks.AESSettingsCipherMode:get_context()
-    return {id = 0x47E8, manda = true, parent = tracks.ContentEncAESSettings}
+    return {id = 0x47E8, manda = true, parent = tracks.ContentEncAESSettings, name = "AESSettingsCipherMode"}
 end
 
 function tracks.AESSettingsCipherMode:validate_data()
@@ -3424,7 +3424,7 @@ function tracks.ContentSignature:new()
 end
 
 function tracks.ContentSignature:get_context()
-    return {id = 0x47E3, manda = false, parent = tracks.ContentEncryption}
+    return {id = 0x47E3, manda = false, parent = tracks.ContentEncryption, name = "ContentSignature"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3438,7 +3438,7 @@ function tracks.ContentSigKeyID:new()
 end
 
 function tracks.ContentSigKeyID:get_context()
-    return {id = 0x47E4, manda = false, parent = tracks.ContentEncryption}
+    return {id = 0x47E4, manda = false, parent = tracks.ContentEncryption, name = "ContentSigKeyID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3452,7 +3452,7 @@ function tracks.ContentSigAlgo:new()
 end
 
 function tracks.ContentSigAlgo:get_context()
-    return {id = 0x47E5, manda = false, parent = tracks.ContentEncryption}
+    return {id = 0x47E5, manda = false, parent = tracks.ContentEncryption, name = "ContentSigAlgo"}
 end
 
 function tracks.ContentSigAlgo:validate_data()
@@ -3470,7 +3470,7 @@ function tracks.ContentSigHashAlgo:new()
 end
 
 function tracks.ContentSigHashAlgo:get_context()
-    return {id = 0x47E6, manda = false, parent = tracks.ContentEncryption}
+    return {id = 0x47E6, manda = false, parent = tracks.ContentEncryption, name = "ContentSigHashAlgo"}
 end
 
 function tracks.ContentSigHashAlgo:validate_data()
@@ -3488,7 +3488,7 @@ function cues.Cues:new()
 end
 
 function cues.Cues:get_context()
-    return {id = 0x1C53BB6B, manda = false, parent = Segment}
+    return {id = 0x1C53BB6B, manda = false, parent = cues.Segment, name = "Cues"}
 end
 
 function cues.Cues:get_semantic()
@@ -3506,7 +3506,7 @@ function cues.CuePoint:new()
 end
 
 function cues.CuePoint:get_context()
-    return {id = 0xBB, manda = true, parent = cues.Cues}
+    return {id = 0xBB, manda = true, parent = cues.Cues, name = "CuePoint"}
 end
 
 function cues.CuePoint:get_semantic()
@@ -3524,7 +3524,7 @@ function cues.CueTime:new()
 end
 
 function cues.CueTime:get_context()
-    return {id = 0xB3, manda = true, parent = cues.CuePoint}
+    return {id = 0xB3, manda = true, parent = cues.CuePoint, name = "CueTime"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3538,7 +3538,7 @@ function cues.CueTrackPositions:new()
 end
 
 function cues.CueTrackPositions:get_context()
-    return {id = 0xB7, manda = true, parent = cues.CuePoint}
+    return {id = 0xB7, manda = true, parent = cues.CuePoint, name = "CueTrackPositions"}
 end
 
 function cues.CueTrackPositions:get_semantic()
@@ -3558,7 +3558,7 @@ function cues.CueTrack:new()
 end
 
 function cues.CueTrack:get_context()
-    return {id = 0xF7, manda = true, parent = cues.CueTrackPositions}
+    return {id = 0xF7, manda = true, parent = cues.CueTrackPositions, name = "CueTrack"}
 end
 
 function cues.CueTrack:validate_data()
@@ -3576,7 +3576,7 @@ function cues.CueClusterPosition:new()
 end
 
 function cues.CueClusterPosition:get_context()
-    return {id = 0xF1, manda = true, parent = cues.CueTrackPositions}
+    return {id = 0xF1, manda = true, parent = cues.CueTrackPositions, name = "CueClusterPosition"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3590,7 +3590,7 @@ function cues.CueRelativePosition:new()
 end
 
 function cues.CueRelativePosition:get_context()
-    return {id = 0xF0, manda = false, parent = cues.CueTrackPositions}
+    return {id = 0xF0, manda = false, parent = cues.CueTrackPositions, name = "CueRelativePosition"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3604,7 +3604,7 @@ function cues.CueDuration:new()
 end
 
 function cues.CueDuration:get_context()
-    return {id = 0xB2, manda = false, parent = cues.CueTrackPositions}
+    return {id = 0xB2, manda = false, parent = cues.CueTrackPositions, name = "CueDuration"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3618,7 +3618,7 @@ function cues.CueBlockNumber:new()
 end
 
 function cues.CueBlockNumber:get_context()
-    return {id = 0x5378, manda = false, parent = cues.CueTrackPositions}
+    return {id = 0x5378, manda = false, parent = cues.CueTrackPositions, name = "CueBlockNumber"}
 end
 
 function cues.CueBlockNumber:validate_data()
@@ -3636,7 +3636,7 @@ function cues.CueCodecState:new()
 end
 
 function cues.CueCodecState:get_context()
-    return {id = 0xEA, manda = true, parent = cues.CueTrackPositions}
+    return {id = 0xEA, manda = true, parent = cues.CueTrackPositions, name = "CueCodecState"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3650,7 +3650,7 @@ function cues.CueReference:new()
 end
 
 function cues.CueReference:get_context()
-    return {id = 0xDB, manda = false, parent = cues.CueTrackPositions}
+    return {id = 0xDB, manda = false, parent = cues.CueTrackPositions, name = "CueReference"}
 end
 
 function cues.CueReference:get_semantic()
@@ -3669,7 +3669,7 @@ function cues.CueRefTime:new()
 end
 
 function cues.CueRefTime:get_context()
-    return {id = 0x96, manda = true, parent = cues.CueReference}
+    return {id = 0x96, manda = true, parent = cues.CueReference, name = "CueRefTime"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3683,7 +3683,7 @@ function cues.CueRefCluster:new()
 end
 
 function cues.CueRefCluster:get_context()
-    return {id = 0x97, manda = true, parent = cues.CueReference}
+    return {id = 0x97, manda = true, parent = cues.CueReference, name = "CueRefCluster"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3697,7 +3697,7 @@ function cues.CueRefNumber:new()
 end
 
 function cues.CueRefNumber:get_context()
-    return {id = 0x535F, manda = false, parent = cues.CueReference}
+    return {id = 0x535F, manda = false, parent = cues.CueReference, name = "CueRefNumber"}
 end
 
 function cues.CueRefNumber:validate_data()
@@ -3715,7 +3715,7 @@ function cues.CueRefCodecState:new()
 end
 
 function cues.CueRefCodecState:get_context()
-    return {id = 0xEB, manda = false, parent = cues.CueReference}
+    return {id = 0xEB, manda = false, parent = cues.CueReference, name = "CueRefCodecState"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3729,7 +3729,7 @@ function attachments.Attachments:new()
 end
 
 function attachments.Attachments:get_context()
-    return {id = 0x1941A469, manda = false, parent = Segment}
+    return {id = 0x1941A469, manda = false, parent = attachments.Segment, name = "Attachments"}
 end
 
 function attachments.Attachments:get_semantic()
@@ -3747,7 +3747,7 @@ function attachments.AttachedFile:new()
 end
 
 function attachments.AttachedFile:get_context()
-    return {id = 0x61A7, manda = true, parent = attachments.Attachments}
+    return {id = 0x61A7, manda = true, parent = attachments.Attachments, name = "AttachedFile"}
 end
 
 function attachments.AttachedFile:get_semantic()
@@ -3768,7 +3768,7 @@ function attachments.FileDescription:new()
 end
 
 function attachments.FileDescription:get_context()
-    return {id = 0x467E, manda = false, parent = attachments.AttachedFile}
+    return {id = 0x467E, manda = false, parent = attachments.AttachedFile, name = "FileDescription"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3782,7 +3782,7 @@ function attachments.FileName:new()
 end
 
 function attachments.FileName:get_context()
-    return {id = 0x466E, manda = true, parent = attachments.AttachedFile}
+    return {id = 0x466E, manda = true, parent = attachments.AttachedFile, name = "FileName"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3796,7 +3796,7 @@ function attachments.FileMediaType:new()
 end
 
 function attachments.FileMediaType:get_context()
-    return {id = 0x4660, manda = true, parent = attachments.AttachedFile}
+    return {id = 0x4660, manda = true, parent = attachments.AttachedFile, name = "FileMediaType"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3810,7 +3810,7 @@ function attachments.FileData:new()
 end
 
 function attachments.FileData:get_context()
-    return {id = 0x465C, manda = true, parent = attachments.AttachedFile}
+    return {id = 0x465C, manda = true, parent = attachments.AttachedFile, name = "FileData"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3824,7 +3824,7 @@ function attachments.FileUID:new()
 end
 
 function attachments.FileUID:get_context()
-    return {id = 0x46AE, manda = true, parent = attachments.AttachedFile}
+    return {id = 0x46AE, manda = true, parent = attachments.AttachedFile, name = "FileUID"}
 end
 
 function attachments.FileUID:validate_data()
@@ -3842,7 +3842,7 @@ function attachments.FileReferral:new()
 end
 
 function attachments.FileReferral:get_context()
-    return {id = 0x4675, manda = false, parent = attachments.AttachedFile}
+    return {id = 0x4675, manda = false, parent = attachments.AttachedFile, name = "FileReferral"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3856,7 +3856,7 @@ function attachments.FileUsedStartTime:new()
 end
 
 function attachments.FileUsedStartTime:get_context()
-    return {id = 0x4661, manda = false, parent = attachments.AttachedFile}
+    return {id = 0x4661, manda = false, parent = attachments.AttachedFile, name = "FileUsedStartTime"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3870,7 +3870,7 @@ function attachments.FileUsedEndTime:new()
 end
 
 function attachments.FileUsedEndTime:get_context()
-    return {id = 0x4662, manda = false, parent = attachments.AttachedFile}
+    return {id = 0x4662, manda = false, parent = attachments.AttachedFile, name = "FileUsedEndTime"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -3884,7 +3884,7 @@ function chapters.Chapters:new()
 end
 
 function chapters.Chapters:get_context()
-    return {id = 0x1043A770, manda = false, parent = Segment}
+    return {id = 0x1043A770, manda = false, parent = Segment, name = "Chapters"}
 end
 
 function chapters.Chapters:get_semantic()
@@ -3923,7 +3923,7 @@ function chapters.EditionEntry:new()
 end
 
 function chapters.EditionEntry:get_context()
-    return {id = 0x45B9, manda = true, parent = chapters.Chapters}
+    return {id = 0x45B9, manda = true, parent = chapters.Chapters, name = "EditionEntry"}
 end
 
 function chapters.EditionEntry:get_semantic()
@@ -3943,7 +3943,7 @@ function chapters.EditionUID:new()
 end
 
 function chapters.EditionUID:get_context()
-    return {id = 0x45BC, manda = false, parent = chapters.EditionEntry}
+    return {id = 0x45BC, manda = false, parent = chapters.EditionEntry, name = "EditionUID"}
 end
 
 function chapters.EditionUID:validate_data()
@@ -3961,7 +3961,7 @@ function chapters.EditionFlagHidden:new()
 end
 
 function chapters.EditionFlagHidden:get_context()
-    return {id = 0x45BD, manda = true, parent = chapters.EditionEntry}
+    return {id = 0x45BD, manda = true, parent = chapters.EditionEntry, name = "EditionFlagHidden"}
 end
 
 function chapters.EditionFlagHidden:validate_data()
@@ -3979,7 +3979,7 @@ function chapters.EditionFlagDefault:new()
 end
 
 function chapters.EditionFlagDefault:get_context()
-    return {id = 0x45DB, manda = true, parent = chapters.EditionEntry}
+    return {id = 0x45DB, manda = true, parent = chapters.EditionEntry, name = "EditionFlagDefault"}
 end
 
 function chapters.EditionFlagDefault:validate_data()
@@ -3997,7 +3997,7 @@ function chapters.EditionFlagOrdered:new()
 end
 
 function chapters.EditionFlagOrdered:get_context()
-    return {id = 0x45DD, manda = true, parent = chapters.EditionEntry}
+    return {id = 0x45DD, manda = true, parent = chapters.EditionEntry, name = "EditionFlagOrdered"}
 end
 
 function chapters.EditionFlagOrdered:validate_data()
@@ -4015,7 +4015,7 @@ function chapters.EditionDisplay:new()
 end
 
 function chapters.EditionDisplay:get_context()
-    return {id = 0x4520, manda = false, parent = chapters.EditionEntry}
+    return {id = 0x4520, manda = false, parent = chapters.EditionEntry, name = "EditionDisplay"}
 end
 
 function chapters.EditionDisplay:get_semantic()
@@ -4033,7 +4033,7 @@ function chapters.EditionString:new()
 end
 
 function chapters.EditionString:get_context()
-    return {id = 0x4521, manda = true, parent = chapters.EditionDisplay}
+    return {id = 0x4521, manda = true, parent = chapters.EditionDisplay, name = "EditionString"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4047,7 +4047,7 @@ function chapters.EditionLanguageIETF:new()
 end
 
 function chapters.EditionLanguageIETF:get_context()
-    return {id = 0x45E4, manda = false, parent = chapters.EditionDisplay}
+    return {id = 0x45E4, manda = false, parent = chapters.EditionDisplay, name = "EditionLanguageIETF"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4061,7 +4061,7 @@ function chapters.ChapterAtom:new()
 end
 
 function chapters.ChapterAtom:get_context()
-    return {id = 0xB6, manda = true, parent = chapters.EditionEntry}
+    return {id = 0xB6, manda = true, parent = chapters.EditionEntry, name = "ChapterAtom"}
 end
 
 function chapters.ChapterAtom:get_semantic()
@@ -4085,7 +4085,7 @@ function chapters.ChapterUID:new()
 end
 
 function chapters.ChapterUID:get_context()
-    return {id = 0x73C4, manda = true, parent = chapters.ChapterAtom}
+    return {id = 0x73C4, manda = true, parent = chapters.ChapterAtom, name = "ChapterUID"}
 end
 
 function chapters.ChapterUID:validate_data()
@@ -4103,7 +4103,7 @@ function chapters.ChapterStringUID:new()
 end
 
 function chapters.ChapterStringUID:get_context()
-    return {id = 0x5654, manda = false, parent = chapters.ChapterAtom}
+    return {id = 0x5654, manda = false, parent = chapters.ChapterAtom, name = "ChapterStringUID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4117,7 +4117,7 @@ function chapters.ChapterTimeStart:new()
 end
 
 function chapters.ChapterTimeStart:get_context()
-    return {id = 0x91, manda = true, parent = chapters.ChapterAtom}
+    return {id = 0x91, manda = true, parent = chapters.ChapterAtom, name = "ChapterTimeStart"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4131,7 +4131,7 @@ function chapters.ChapterTimeEnd:new()
 end
 
 function chapters.ChapterTimeEnd:get_context()
-    return {id = 0x92, manda = false, parent = chapters.ChapterAtom}
+    return {id = 0x92, manda = false, parent = chapters.ChapterAtom, name = "ChapterTimeEnd"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4145,7 +4145,7 @@ function chapters.ChapterFlagHidden:new()
 end
 
 function chapters.ChapterFlagHidden:get_context()
-    return {id = 0x98, manda = true, parent = chapters.ChapterAtom}
+    return {id = 0x98, manda = true, parent = chapters.ChapterAtom, name = "ChapterFlagHidden"}
 end
 
 function chapters.ChapterFlagHidden:validate_data()
@@ -4163,7 +4163,7 @@ function chapters.ChapterFlagEnabled:new()
 end
 
 function chapters.ChapterFlagEnabled:get_context()
-    return {id = 0x4598, manda = true, parent = chapters.ChapterAtom}
+    return {id = 0x4598, manda = true, parent = chapters.ChapterAtom, name = "ChapterFlagEnabled"}
 end
 
 function chapters.ChapterFlagEnabled:validate_data()
@@ -4181,7 +4181,7 @@ function chapters.ChapterSegmentUUID:new()
 end
 
 function chapters.ChapterSegmentUUID:get_context()
-    return {id = 0x6E67, manda = false, parent = chapters.ChapterAtom}
+    return {id = 0x6E67, manda = false, parent = chapters.ChapterAtom, name = "ChapterSegmentUUID"}
 end
 
 function chapters.ChapterSegmentUUID:validate_data_size()
@@ -4208,7 +4208,7 @@ function chapters.ChapterSkipType:new()
 end
 
 function chapters.ChapterSkipType:get_context()
-    return {id = 0x4588, manda = false, parent = chapters.ChapterAtom}
+    return {id = 0x4588, manda = false, parent = chapters.ChapterAtom, name = "ChapterSkipType"}
 end
 
 function chapters.ChapterSkipType:validate_data()
@@ -4226,7 +4226,7 @@ function chapters.ChapterSegmentEditionUID:new()
 end
 
 function chapters.ChapterSegmentEditionUID:get_context()
-    return {id = 0x6EBC, manda = false, parent = chapters.ChapterAtom}
+    return {id = 0x6EBC, manda = false, parent = chapters.ChapterAtom, name = "ChapterSegmentEditionUID"}
 end
 
 function chapters.ChapterSegmentEditionUID:validate_data()
@@ -4244,7 +4244,7 @@ function chapters.ChapterPhysicalEquiv:new()
 end
 
 function chapters.ChapterPhysicalEquiv:get_context()
-    return {id = 0x63C3, manda = false, parent = chapters.ChapterAtom}
+    return {id = 0x63C3, manda = false, parent = chapters.ChapterAtom, name = "ChapterPhysicalEquiv"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4258,7 +4258,7 @@ function chapters.ChapterTrack:new()
 end
 
 function chapters.ChapterTrack:get_context()
-    return {id = 0x8F, manda = false, parent = chapters.ChapterAtom}
+    return {id = 0x8F, manda = false, parent = chapters.ChapterAtom, name = "ChapterTrack"}
 end
 
 function chapters.ChapterTrack:get_semantic()
@@ -4276,7 +4276,7 @@ function chapters.ChapterTrackUID:new()
 end
 
 function chapters.ChapterTrackUID:get_context()
-    return {id = 0x89, manda = true, parent = chapters.ChapterTrack}
+    return {id = 0x89, manda = true, parent = chapters.ChapterTrack, name = "ChapterTrackUID"}
 end
 
 function chapters.ChapterTrackUID:validate_data()
@@ -4294,7 +4294,7 @@ function chapters.ChapterDisplay:new()
 end
 
 function chapters.ChapterDisplay:get_context()
-    return {id = 0x80, manda = false, parent = chapters.ChapterAtom}
+    return {id = 0x80, manda = false, parent = chapters.ChapterAtom, name = "ChapterDisplay"}
 end
 
 function chapters.ChapterDisplay:get_semantic()
@@ -4313,7 +4313,7 @@ function chapters.ChapString:new()
 end
 
 function chapters.ChapString:get_context()
-    return {id = 0x85, manda = true, parent = chapters.ChapterDisplay}
+    return {id = 0x85, manda = true, parent = chapters.ChapterDisplay, name = "ChapString"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4327,7 +4327,7 @@ function chapters.ChapLanguage:new()
 end
 
 function chapters.ChapLanguage:get_context()
-    return {id = 0x437C, manda = true, parent = chapters.ChapterDisplay}
+    return {id = 0x437C, manda = true, parent = chapters.ChapterDisplay, name = "ChapLanguage"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4341,7 +4341,7 @@ function chapters.ChapLanguageBCP47:new()
 end
 
 function chapters.ChapLanguageBCP47:get_context()
-    return {id = 0x437D, manda = false, parent = chapters.ChapterDisplay}
+    return {id = 0x437D, manda = false, parent = chapters.ChapterDisplay, name = "ChapLanguageBCP47"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4355,7 +4355,7 @@ function chapters.ChapCountry:new()
 end
 
 function chapters.ChapCountry:get_context()
-    return {id = 0x437E, manda = false, parent = chapters.ChapterDisplay}
+    return {id = 0x437E, manda = false, parent = chapters.ChapterDisplay, name = "ChapCountry"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4369,7 +4369,7 @@ function chapters.ChapProcess:new()
 end
 
 function chapters.ChapProcess:get_context()
-    return {id = 0x6944, manda = false, parent = chapters.ChapterAtom}
+    return {id = 0x6944, manda = false, parent = chapters.ChapterAtom, name = "ChapProcess"}
 end
 
 function chapters.ChapProcess:get_semantic()
@@ -4388,7 +4388,7 @@ function chapters.ChapProcessCodecID:new()
 end
 
 function chapters.ChapProcessCodecID:get_context()
-    return {id = 0x6955, manda = true, parent = chapters.ChapProcess}
+    return {id = 0x6955, manda = true, parent = chapters.ChapProcess, name = "ChapProcessCodecID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4402,7 +4402,7 @@ function chapters.ChapProcessPrivate:new()
 end
 
 function chapters.ChapProcessPrivate:get_context()
-    return {id = 0x450D, manda = false, parent = chapters.ChapProcess}
+    return {id = 0x450D, manda = false, parent = chapters.ChapProcess, name = "ChapProcessPrivate"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4416,7 +4416,7 @@ function chapters.ChapProcessCommand:new()
 end
 
 function chapters.ChapProcessCommand:get_context()
-    return {id = 0x6911, manda = false, parent = chapters.ChapProcess}
+    return {id = 0x6911, manda = false, parent = chapters.ChapProcess, name = "ChapProcessCommand"}
 end
 
 function chapters.ChapProcessCommand:get_semantic()
@@ -4434,7 +4434,7 @@ function chapters.ChapProcessTime:new()
 end
 
 function chapters.ChapProcessTime:get_context()
-    return {id = 0x6922, manda = true, parent = chapters.ChapProcessCommand}
+    return {id = 0x6922, manda = true, parent = chapters.ChapProcessCommand, name = "ChapProcessTime"}
 end
 
 function chapters.ChapProcessTime:validate_data()
@@ -4452,7 +4452,7 @@ function chapters.ChapProcessData:new()
 end
 
 function chapters.ChapProcessData:get_context()
-    return {id = 0x6933, manda = true, parent = chapters.ChapProcessCommand}
+    return {id = 0x6933, manda = true, parent = chapters.ChapProcessCommand, name = "ChapProcessData"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4466,7 +4466,7 @@ function tags.Tags:new()
 end
 
 function tags.Tags:get_context()
-    return {id = 0x1254C367, manda = false, parent = Segment}
+    return {id = 0x1254C367, manda = false, parent = tags.Segment, name = "Tags"}
 end
 
 function tags.Tags:get_semantic()
@@ -4484,7 +4484,7 @@ function tags.Tag:new()
 end
 
 function tags.Tag:get_context()
-    return {id = 0x7373, manda = true, parent = tags.Tags}
+    return {id = 0x7373, manda = true, parent = tags.Tags, name = "Tag"}
 end
 
 function tags.Tag:get_semantic()
@@ -4502,7 +4502,7 @@ function tags.Targets:new()
 end
 
 function tags.Targets:get_context()
-    return {id = 0x63C0, manda = true, parent = tags.Tag}
+    return {id = 0x63C0, manda = true, parent = tags.Tag, name = "Targets"}
 end
 
 function tags.Targets:get_semantic()
@@ -4521,7 +4521,7 @@ function tags.TargetTypeValue:new()
 end
 
 function tags.TargetTypeValue:get_context()
-    return {id = 0x68CA, manda = true, parent = tags.Targets}
+    return {id = 0x68CA, manda = true, parent = tags.Targets, name = "TargetTypeValue"}
 end
 
 function tags.TargetTypeValue:validate_data()
@@ -4545,7 +4545,7 @@ function tags.TargetType:new()
 end
 
 function tags.TargetType:get_context()
-    return {id = 0x63CA, manda = false, parent = tags.Targets}
+    return {id = 0x63CA, manda = false, parent = tags.Targets, name = "TargetType"}
 end
 
 function tags.TargetType:validate_data()
@@ -4572,7 +4572,7 @@ function tags.TagTrackUID:new()
 end
 
 function tags.TagTrackUID:get_context()
-    return {id = 0x63C5, manda = false, parent = tags.Targets}
+    return {id = 0x63C5, manda = false, parent = tags.Targets, name = "TagTrackUID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4586,7 +4586,7 @@ function tags.TagEditionUID:new()
 end
 
 function tags.TagEditionUID:get_context()
-    return {id = 0x63C9, manda = false, parent = tags.Targets}
+    return {id = 0x63C9, manda = false, parent = tags.Targets, name = "TagEditionUID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4600,7 +4600,7 @@ function tags.TagChapterUID:new()
 end
 
 function tags.TagChapterUID:get_context()
-    return {id = 0x63C4, manda = false, parent = tags.Targets}
+    return {id = 0x63C4, manda = false, parent = tags.Targets, name = "TagChapterUID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4614,7 +4614,7 @@ function tags.TagAttachmentUID:new()
 end
 
 function tags.TagAttachmentUID:get_context()
-    return {id = 0x63C6, manda = false, parent = tags.Targets}
+    return {id = 0x63C6, manda = false, parent = tags.Targets, name = "TagAttachmentUID"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4628,7 +4628,7 @@ function tags.SimpleTag:new()
 end
 
 function tags.SimpleTag:get_context()
-    return {id = 0x67C8, manda = true, parent = tags.Tag}
+    return {id = 0x67C8, manda = true, parent = tags.Tag, name = "SimpleTag"}
 end
 
 function tags.SimpleTag:get_semantic()
@@ -4648,7 +4648,7 @@ function tags.TagName:new()
 end
 
 function tags.TagName:get_context()
-    return {id = 0x45A3, manda = true, parent = tags.SimpleTag}
+    return {id = 0x45A3, manda = true, parent = tags.SimpleTag, name = "TagName"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4662,7 +4662,7 @@ function tags.TagLanguage:new()
 end
 
 function tags.TagLanguage:get_context()
-    return {id = 0x447A, manda = true, parent = tags.SimpleTag}
+    return {id = 0x447A, manda = true, parent = tags.SimpleTag, name = "TagLanguage"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4676,7 +4676,7 @@ function tags.TagLanguageBCP47:new()
 end
 
 function tags.TagLanguageBCP47:get_context()
-    return {id = 0x447B, manda = false, parent = tags.SimpleTag}
+    return {id = 0x447B, manda = false, parent = tags.SimpleTag, name = "TagLanguageBCP47"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4690,7 +4690,7 @@ function tags.TagDefault:new()
 end
 
 function tags.TagDefault:get_context()
-    return {id = 0x4484, manda = true, parent = tags.SimpleTag}
+    return {id = 0x4484, manda = true, parent = tags.SimpleTag, name = "TagDefault"}
 end
 
 function tags.TagDefault:validate_data()
@@ -4708,7 +4708,7 @@ function tags.TagDefaultBogus:new()
 end
 
 function tags.TagDefaultBogus:get_context()
-    return {id = 0x44B4, manda = true, parent = tags.SimpleTag}
+    return {id = 0x44B4, manda = true, parent = tags.SimpleTag, name = "TagDefaultBogus"}
 end
 
 function tags.TagDefaultBogus:validate_data()
@@ -4726,7 +4726,7 @@ function tags.TagString:new()
 end
 
 function tags.TagString:get_context()
-    return {id = 0x4487, manda = false, parent = tags.SimpleTag}
+    return {id = 0x4487, manda = false, parent = tags.SimpleTag, name = "TagString"}
 end
 -- -----------------------------------------------------------------------------
 
@@ -4740,7 +4740,7 @@ function tags.TagBinary:new()
 end
 
 function tags.TagBinary:get_context()
-    return {id = 0x4485, manda = false, parent = tags.SimpleTag}
+    return {id = 0x4485, manda = false, parent = tags.SimpleTag, name = "TagBinary"}
 end
 -- -----------------------------------------------------------------------------
 
