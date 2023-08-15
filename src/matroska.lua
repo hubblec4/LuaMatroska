@@ -4722,6 +4722,13 @@ function tags.SimpleTag:get_semantic()
         tags.TagDefault, tags.TagDefaultBogus, tags.TagString, tags.TagBinary,
         tags.SimpleTag}
 end
+
+-- get_string: returns the string value from a TagString element
+function tags.SimpleTag:get_string()
+    local ts = self:find_child(tags.TagString)
+    if ts then return ts.value end
+    return ""
+end
 -- -----------------------------------------------------------------------------
 
 
