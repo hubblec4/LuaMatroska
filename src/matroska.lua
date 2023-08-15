@@ -4727,7 +4727,7 @@ end
 function tags.SimpleTag:get_string()
     local ts = self:find_child(tags.TagString)
     if ts then return ts.value end
-    return ""
+    return nil
 end
 -- -----------------------------------------------------------------------------
 
