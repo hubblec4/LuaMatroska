@@ -4472,6 +4472,25 @@ end
 function tags.Tags:get_semantic()
     return {tags.Tag}
 end
+
+-- find_Tag: returns a Tag or all Tag for an element
+function tags.Tags:find_Tag(elem, all)
+    if #self.value == 0 then return nil end
+    local tag_s = {}
+    local tag, idx = self:find_child(tags.Tag)
+    while tag do
+        if tag:matches(elem) then
+            if all then
+                table.insert(tag_s, tag)
+            else
+                return tag
+            end
+        end
+
+        tag, idx = self:find_next_child(idx)
+    end
+    return tag_s
+end
 -- -----------------------------------------------------------------------------
 
 
