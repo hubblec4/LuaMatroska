@@ -4491,6 +4491,18 @@ function tags.Tags:find_Tag(elem, all)
     end
     return tag_s
 end
+
+-- find_Tag_byName: returns a Tag when the TagName and the target matches
+function tags.Tags:find_Tag_byName(elem, name)
+    local tag, idx = self:find_child(tags.Tag)
+    while tag do
+        if tag:matches(elem) and tag:find_SimpleTag_byName(name) then
+            return tag
+        end
+        tag, idx = self:find_next_child(idx)
+    end
+    return nil
+end
 -- -----------------------------------------------------------------------------
 
 
