@@ -4473,7 +4473,7 @@ function tags.Tags:get_semantic()
     return {tags.Tag}
 end
 
--- find_Tag: returns a Tag or all Tag for an element
+--[[ not need at the moment find_Tag: returns a Tag or all Tag for an element
 function tags.Tags:find_Tag(elem, all)
     if #self.value == 0 then return nil end
     local tag_s = {}
@@ -4490,7 +4490,7 @@ function tags.Tags:find_Tag(elem, all)
         tag, idx = self:find_next_child(idx)
     end
     return tag_s
-end
+end]]
 
 -- find_Tag_byName: returns a Tag when the TagName and the target matches
 function tags.Tags:find_Tag_byName(elem, name)
