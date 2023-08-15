@@ -4510,6 +4510,17 @@ function tags.Tag:get_semantic()
     return {tags.Targets, tags.SimpleTag}
 end
 
+-- find_SimpleTag_byName: returns a SimpleTag element when the TagName matches
+function tags.Tag:find_SimpleTag_byName(tag_name)
+    local simple, idx = self:find_child(tags.SimpleTag)
+    while simple do
+        if simple:get_child(tags.TagName).value == tag_name then
+            return simple
+        end
+        simple, idx = self:find_next_child(idx)
+    end
+    return nil
+end
 
 -- matches: returns boolean, checks if an element is the target of this Tag
 function tags.Tag:matches(elem)
