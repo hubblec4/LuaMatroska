@@ -4509,6 +4509,46 @@ function tags.Targets:get_semantic()
     return {tags.TargetTypeValue, tags.TargetType, tags.TagTrackUID,
         tags.TagEditionUID, tags.TagChapterUID, tags.TagAttachmentUID}
 end
+
+-- matches: returns boolean, checks if an element is the target
+function tags.Targets:matches(elem)
+    -- the element can be only one of the 4 supported tag elements
+    local uid, target_class
+    if elem:is_class(chapters.EditionEntry) then
+        uid = elem:find_child(chapters.EditionUID)
+        if uid == nil then
+            uid = 0
+        else
+            uid = uid.values
+        end
+        target_class = tags.TagEditionUID
+
+    elseif elem:is_class(tracks.TrackEntryEntry) then
+        uid = elem:get_child(tracks.TrackUID).value
+        target_class = tags.TagTrackUID
+
+    elseif elem:is_class(chapters.ChapterAtom) then
+        uid = elem:get_child(chapters.ChapterUID).value
+        target_class = tags.TagChapterUID
+
+    elseif elem:is_class(attachments.AttachedFile) then
+        uid = elem:get_child(attachments.FileUID).value
+        target_class = tags.TagAttachmentUID
+
+    else -- not supported elements
+        return false
+    end
+
+    local tar_uid, idx = self:find_child(target_class)
+    while tar_uid do
+        if tar_uid.value == 0 -- 0 is a special case and means, apply to all elements
+        or tar_uid.value == uid then return true end
+        
+        tar_uid, idx = self:find_next_child(idx)
+    end
+
+    return false
+end
 -- -----------------------------------------------------------------------------
 
 
