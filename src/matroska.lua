@@ -4550,7 +4550,7 @@ function tags.Tag:matches(elem)
         end
         target_class = tags.TagEditionUID
 
-    elseif elem:is_class(tracks.TrackEntryEntry) then
+    elseif elem:is_class(tracks.TrackEntry) then
         uid = elem:get_child(tracks.TrackUID).value
         target_class = tags.TagTrackUID
 
