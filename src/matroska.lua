@@ -4490,28 +4490,13 @@ end
 function tags.Tag:get_semantic()
     return {tags.Targets, tags.SimpleTag}
 end
--- -----------------------------------------------------------------------------
 
 
--- Targets ---------------------------------------------------------------------
-function tags.Targets:new()
-    local elem = {}
-    setmetatable(elem, self)
-    self.__index = self
-    return elem
-end
+-- matches: returns boolean, checks if an element is the target of this Tag
+function tags.Tag:matches(elem)
+    local targets = self:get_child(tags.Targets)
+    if #targets.value == 0 then return false end
 
-function tags.Targets:get_context()
-    return {id = 0x63C0, manda = true, parent = tags.Tag, name = "Targets"}
-end
-
-function tags.Targets:get_semantic()
-    return {tags.TargetTypeValue, tags.TargetType, tags.TagTrackUID,
-        tags.TagEditionUID, tags.TagChapterUID, tags.TagAttachmentUID}
-end
-
--- matches: returns boolean, checks if an element is the target
-function tags.Targets:matches(elem)
     -- the element can be only one of the 4 supported tag elements
     local uid, target_class
     if elem:is_class(chapters.EditionEntry) then
@@ -4539,15 +4524,34 @@ function tags.Targets:matches(elem)
         return false
     end
 
-    local tar_uid, idx = self:find_child(target_class)
+    local tar_uid, idx = targets:find_child(target_class)
     while tar_uid do
         if tar_uid.value == 0 -- 0 is a special case and means, apply to all elements
         or tar_uid.value == uid then return true end
         
-        tar_uid, idx = self:find_next_child(idx)
+        tar_uid, idx = targets:find_next_child(idx)
     end
 
     return false
+end
+-- -----------------------------------------------------------------------------
+
+
+-- Targets ---------------------------------------------------------------------
+function tags.Targets:new()
+    local elem = {}
+    setmetatable(elem, self)
+    self.__index = self
+    return elem
+end
+
+function tags.Targets:get_context()
+    return {id = 0x63C0, manda = true, parent = tags.Tag, name = "Targets"}
+end
+
+function tags.Targets:get_semantic()
+    return {tags.TargetTypeValue, tags.TargetType, tags.TagTrackUID,
+        tags.TagEditionUID, tags.TagChapterUID, tags.TagAttachmentUID}
 end
 -- -----------------------------------------------------------------------------
 
