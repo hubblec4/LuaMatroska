@@ -4093,6 +4093,64 @@ end
 function chapters.ChapterAtom:is_enabled()
     return self:get_child(chapters.ChapterFlagEnabled).value == 1
 end
+
+-- get_name: returns String
+function chapters.ChapterAtom:get_name(language, all)
+    --[[ language: string, ISO639_3 or BCP47
+         all: boolean, all names of a language or all names if no language is set
+    ]]
+    local name_s = ""
+    local lng, i, name
+    local found_lang = false
+
+    local display, idx = self:find_child(chapters.ChapterDisplay)
+    while display do
+        if language ~= "" then
+            found_lang = false
+
+            -- check BCP47 first
+            lng, i = self:find_child(chapters.ChapLanguageBCP47)
+            while lng do
+                if lng.value == language then
+                    found_lang = true
+                    break
+                end
+                lng, i = self:find_next_child(i)
+            end
+
+            -- check IS=639_3 languages
+            if not found_lang then
+                lng, i = self:get_child(chapters.ChapLanguage)
+                while lng do
+                    if lng.value == language then
+                        found_lang = true
+                        break
+                    end
+                    lng, i = self:find_next_child(i)
+                end
+            end
+        end
+
+        -- get the name    
+        if found_lang or language == "" then
+            if name_s == "" then
+                name_s = display:get_child(chapters.ChapString).value
+            else
+                name = display:get_child(chapters.ChapString).value
+                if name ~= "" then
+                    name_s = name_s .. " || " .. name
+                end
+            end
+        end
+
+        -- break if a name was found
+        if name_s ~= "" and all ~= true then break end
+        
+        display, idx = self:find_next_child(idx)
+    end
+
+    return name_s
+end
 -- -----------------------------------------------------------------------------
 
 
