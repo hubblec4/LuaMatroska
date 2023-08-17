@@ -3931,6 +3931,16 @@ function chapters.EditionEntry:get_semantic()
         chapters.EditionFlagDefault, chapters.EditionFlagOrdered,
         chapters.EditionDisplay, chapters.ChapterAtom}
 end
+
+-- is_ordered: returns boolean, true = ordered chapters are used in this edition
+function chapters.EditionEntry:is_ordered()
+    return self:get_child(chapters.EditionFlagOrdered).value == 1
+end
+
+-- is_hidden: returns boolean, true = no chapter names should be provided
+function chapters.EditionEntry:is_hidden()
+    return self:get_child(chapters.EditionFlagHidden).value == 1
+end
 -- -----------------------------------------------------------------------------
 
 
