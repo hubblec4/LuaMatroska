@@ -3901,11 +3901,11 @@ function chapters.Chapters:get_default_edition()
     
     local edition, idx = self:find_child(chapters.EditionEntry)
     while edition do
-        if edition:get_child(chapters.EditionFlagDefault).value then
+        if edition:get_child(chapters.EditionFlagDefault).value == 1 then
             return edition
         end
         -- next edition
-        edition = self:find_next_child(idx)
+        edition, idx = self:find_next_child(idx)
     end
 
     -- no default edition found, return first edition
