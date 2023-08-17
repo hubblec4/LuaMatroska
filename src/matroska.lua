@@ -4083,6 +4083,16 @@ function chapters.ChapterAtom:get_semantic()
         chapters.ChapterTrack, chapters.ChapterDisplay, chapters.ChapProcess,
         chapters.ChapterAtom}
 end
+
+-- is_hidden: returns boolean
+function chapters.ChapterAtom:is_hidden()
+    return self:get_child(chapters.ChapterFlagHidden).value == 1
+end
+
+-- is_enabled: returns boolean
+function chapters.ChapterAtom:is_enabled()
+    return self:get_child(chapters.ChapterFlagEnabled).value == 1
+end
 -- -----------------------------------------------------------------------------
 
 
