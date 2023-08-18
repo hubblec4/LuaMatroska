@@ -3897,19 +3897,21 @@ function chapters.Chapters:get_default_edition()
     -- first edition with Default-Flag set to 1
     -- otherwise first edition is the default one
 
-    if #self.value == 0 then return nil end
+    if #self.value == 0 then return nil, -1 end
+    local e_idx = 0 -- an edition index
     
     local edition, idx = self:find_child(chapters.EditionEntry)
     while edition do
         if edition:get_child(chapters.EditionFlagDefault).value == 1 then
-            return edition
+            return edition, e_idx
         end
         -- next edition
         edition, idx = self:find_next_child(idx)
+        e_idx = e_idx + 1
     end
 
     -- no default edition found, return first edition
-    return self:find_child(chapters.EditionEntry)
+    return self:find_child(chapters.EditionEntry), 0
 end
 -- -----------------------------------------------------------------------------
 
