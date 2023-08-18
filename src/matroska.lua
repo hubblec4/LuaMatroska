@@ -3913,6 +3913,30 @@ function chapters.Chapters:get_default_edition()
     -- no default edition found, return first edition
     return self:find_child(chapters.EditionEntry), 0
 end
+
+-- get_edition: returns the edition for a given index(0-based) or UID
+function chapters.Chapters:get_edition(idx, uid)
+    -- if uid is set than ignore idx    
+    local x = 0
+    local e_uid
+
+    local edition, i = self:find_child(chapters.EditionEntry)
+    while edition do
+        if uid then
+            e_uid = edition:find_child(chapters.EditionUID)
+            if e_uid and e_uid.value == uid then
+                return edition, x
+            end
+
+        -- check idx    
+        elseif x == idx then
+            return edition, x
+        end
+        
+        edition, i = self:find_next_child(i)
+        x = x + 1
+    end
+end
 -- -----------------------------------------------------------------------------
 
 
