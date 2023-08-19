@@ -4145,7 +4145,7 @@ function chapters.ChapterAtom:get_name(language, all)
                 lng, i = self:find_next_child(i)
             end
 
-            -- check IS=639_3 languages
+            -- check IS0639_3 languages
             if not found_lang then
                 lng, i = self:get_child(chapters.ChapLanguage)
                 while lng do
