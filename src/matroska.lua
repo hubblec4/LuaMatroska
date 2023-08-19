@@ -4130,6 +4130,7 @@ function chapters.ChapterAtom:get_name(language, all)
     local found_lang = false
 
     local display, idx = self:find_child(chapters.ChapterDisplay)
+    local first_display = display
     while display do
         if language ~= "" then
             found_lang = false
@@ -4175,6 +4176,10 @@ function chapters.ChapterAtom:get_name(language, all)
         display, idx = self:find_next_child(idx)
     end
 
+    -- check if a name is found, fallback to first display name
+    if name_s == "" and first_display then
+        name_s = first_display:get_child(chapters.ChapString).value
+    end
     return name_s
 end
 -- -----------------------------------------------------------------------------
