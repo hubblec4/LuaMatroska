@@ -1266,6 +1266,8 @@ function tracks.Tracks:get_track(idx, trk_type)
         end
         trk, t = self:find_next_child(t)
     end
+
+    return nil -- no track found
 end
 -- -----------------------------------------------------------------------------
 
