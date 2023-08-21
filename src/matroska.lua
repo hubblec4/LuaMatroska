@@ -93,6 +93,7 @@ local tracks = {
     TrackNumber = ebml.uinteger:new(),
     TrackUID = ebml.uinteger:new(),
     TrackType = ebml.uinteger:new(),
+    TrackType_enum = {video = 1, audio = 2, complex = 3, logo = 16, subtitle = 17, buttons = 18, control = 32, metadata = 33},
     FlagEnabled = ebml.uinteger:new(1),
     FlagDefault = ebml.uinteger:new(1),
     FlagForced = ebml.uinteger:new(0),
