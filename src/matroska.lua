@@ -1284,6 +1284,14 @@ function tracks.TrackEntry:get_semantic()
         tracks.TrickMasterTrackUID, tracks.TrickMasterTrackSegmentUID,
         tracks.ContentEncodings}
 end
+
+-- get_language: returns String with a language code, default is "eng"
+function tracks.TrackEntry:get_language()
+    local lng = self:find_child(tracks.LanguageBCP47)
+    if lng then return lng.value end
+    -- old language
+    return self:get_child(tracks.Language).value
+end
 -- -----------------------------------------------------------------------------
 
 
