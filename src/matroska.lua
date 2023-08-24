@@ -4683,7 +4683,7 @@ function tags.Tag:matches(elem)
         if uid == nil then
             uid = 0
         else
-            uid = uid.values
+            uid = uid.value
         end
         target_class = tags.TagEditionUID
 
