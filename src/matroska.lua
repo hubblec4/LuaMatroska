@@ -4178,24 +4178,24 @@ function chapters.ChapterAtom:get_name(language, all)
             found_lang = false
 
             -- check BCP47 first
-            lng, i = self:find_child(chapters.ChapLanguageBCP47)
+            lng, i = display:find_child(chapters.ChapLanguageBCP47)
             while lng do
                 if lng.value == language then
                     found_lang = true
                     break
                 end
-                lng, i = self:find_next_child(i)
+                lng, i = display:find_next_child(i)
             end
 
             -- check IS0639_3 languages
             if not found_lang then
-                lng, i = self:get_child(chapters.ChapLanguage)
+                lng, i = display:get_child(chapters.ChapLanguage)
                 while lng do
                     if lng.value == language then
                         found_lang = true
                         break
                     end
-                    lng, i = self:find_next_child(i)
+                    lng, i = display:find_next_child(i)
                 end
             end
         end
