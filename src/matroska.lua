@@ -1269,6 +1269,20 @@ function tracks.Tracks:get_track(idx, trk_type)
 
     return nil -- no track found
 end
+
+-- get_track_by_number(): returns a TrackEntry element when the number matches
+function tracks.Tracks:get_track_by_number(num)
+    if not num then return nil end -- Track numbers start with 1
+
+    -- loop tracks
+    local trk, t = self:find_child(tracks.TrackEntry)
+    while trk do
+        if trk:get_child(tracks.TrackNumber).value == num then return trk end
+        trk, t = self:find_next_child(t)
+    end
+
+    return nil -- no track found
+end
 -- -----------------------------------------------------------------------------
 
 
