@@ -4163,7 +4163,7 @@ function chapters.ChapterAtom:is_enabled()
 end
 
 -- get_name: returns String
-function chapters.ChapterAtom:get_name(language, all)
+function chapters.ChapterAtom:get_name(language, all, no_fallback)
     --[[ language: string, ISO639_3 or BCP47
          all: boolean, all names of a language or all names if no language is set
     ]]
@@ -4218,9 +4218,12 @@ function chapters.ChapterAtom:get_name(language, all)
         display, idx = self:find_next_child(idx)
     end
 
-    -- check if a name is found, fallback to first display name
-    if name_s == "" and first_display then
-        name_s = first_display:get_child(chapters.ChapString).value
+    -- check if a name was found, fallback to first display name
+    if name_s == "" then
+        if no_fallback then return "" end
+        if first_display then
+            name_s = first_display:get_child(chapters.ChapString).value
+        end
     end
     return name_s
 end
