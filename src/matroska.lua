@@ -1255,7 +1255,7 @@ end
 function tracks.Tracks:get_track(idx, trk_type)
     if idx == nil then idx = 0 end
     if trk_type == nil then trk_type = tracks.TrackType_enum.video end
-    local i = 0
+    local i = 1
 
     -- loop tracks
     local trk, t = self:find_child(tracks.TrackEntry)
