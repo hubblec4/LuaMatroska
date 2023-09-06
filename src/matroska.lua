@@ -3940,7 +3940,7 @@ function chapters.Chapters:get_default_edition()
     -- otherwise first edition is the default one
 
     if #self.value == 0 then return nil, -1 end
-    local e_idx = 0 -- an edition index
+    local e_idx = 1 -- an edition index
     
     local edition, idx = self:find_child(chapters.EditionEntry)
     while edition do
@@ -3953,13 +3953,13 @@ function chapters.Chapters:get_default_edition()
     end
 
     -- no default edition found, return first edition
-    return self:find_child(chapters.EditionEntry), 0
+    return self:find_child(chapters.EditionEntry), 1
 end
 
--- get_edition: returns the edition for a given index(0-based) or UID
+-- get_edition: returns the edition for a given index or UID
 function chapters.Chapters:get_edition(idx, uid)
     -- if uid is set than ignore idx    
-    local x = 0
+    local x = 1
     local e_uid
 
     local edition, i = self:find_child(chapters.EditionEntry)
@@ -3978,6 +3978,9 @@ function chapters.Chapters:get_edition(idx, uid)
         edition, i = self:find_next_child(i)
         x = x + 1
     end
+
+    -- no edition found
+    return nil, -1
 end
 -- -----------------------------------------------------------------------------
 
