@@ -1252,7 +1252,7 @@ function tracks.Tracks:get_semantic()
 end
 
 -- get_track: returns a TrackEntry element when the type and Index matches
-function tracks.Tracks:get_track(idx, trk_type)
+function tracks.Tracks:get_track(idx, uid, trk_type)
     if idx == nil then idx = 1 end
     if trk_type == nil then trk_type = tracks.TrackType_enum.video end
     local i = 1
@@ -1261,7 +1261,12 @@ function tracks.Tracks:get_track(idx, trk_type)
     local trk, t = self:find_child(tracks.TrackEntry)
     while trk do
         if trk:get_child(tracks.TrackType).value == trk_type then
-            if i == idx then return trk end
+            if uid then
+                if trk:get_child(tracks.TrackUID).value == uid then
+                    return trk, i
+                end
+            
+            elseif i == idx then return trk, i end
             i = i + 1
         end
         trk, t = self:find_next_child(t)
