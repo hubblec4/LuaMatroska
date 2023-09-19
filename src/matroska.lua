@@ -4658,7 +4658,7 @@ end]]
 function tags.Tags:find_Tag_byName(elem, name)
     local tag, idx = self:find_child(tags.Tag)
     while tag do
-        if tag:matches(elem) and tag:find_SimpleTag_byName(name) then
+        if (not elem or tag:matches(elem)) and tag:find_SimpleTag_byName(name) then
             return tag
         end
         tag, idx = self:find_next_child(idx)
