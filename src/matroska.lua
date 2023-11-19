@@ -4607,6 +4607,9 @@ end
 function chapters.ChapProcessTime:validate_data()
     return self.value >= 0 and self.value <= 2
 end
+
+-- CHAP_PROCESS_TIME ENUMS
+local CHAP_PROCESS_TIME = {DURING = 0, BEFORE = 1, AFTER = 2}
 -- -----------------------------------------------------------------------------
 
 
@@ -5016,7 +5019,9 @@ local module = {
     chapters = chapters,
     cues = cues,
     attachs = attachments,
-    tags = tags
+    tags = tags,
+
+    CHAP_PROCESS_TIME = CHAP_PROCESS_TIME
 }
 
 return module
