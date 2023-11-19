@@ -4170,6 +4170,11 @@ function chapters.ChapterAtom:is_enabled()
     return self:get_child(chapters.ChapterFlagEnabled).value == 1
 end
 
+-- get_uid: returns the UID of this chapter
+function chapters.ChapterAtom:get_uid()
+    return self:get_child(chapters.ChapterUID).value
+end
+
 -- get_name: returns String
 function chapters.ChapterAtom:get_name(language, all, no_fallback)
     --[[ language: string, ISO639_3 or BCP47
